@@ -313,10 +313,12 @@
             <div class="section-content">
                 <h2>We Value Your Input</h2>
                 <p>What would you want for your shared flat? What's your ideal student housing solution? Tell us, and we'll do everything in our power to make it happen!</p>
-                <form id="feedback-form">
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your ideas and suggestions" required></textarea>
+                <form id="feedback-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your ideas and suggestions" required></textarea>
                     <button type="submit" class="btn">Submit Feedback</button>
+                </form>
+                <a href="tel:+3933190353037" class="btn" style="margin-top: 20px;">Contact +3933190353037 Lorenzo Oni-Joseph</a>
                 </form>
             </div>
         </div>
@@ -376,10 +378,12 @@
 
         // Handle form submission
         document.getElementById('feedback-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your feedback! We will get back to you soon.');
-            this.reset();
-        });
+          e.preventDefault();
+          alert('Thank you for your feedback! We will get back to you soon.');
+          this.submit(); // Actually submits the form
+          <a href="tel:+3933190353037" class="btn" style="margin-top: 20px;">Contact +3933190353037 Lorenzo Oni-Joseph</a>
+         });
     </script>
 </body>
 </html>
+
