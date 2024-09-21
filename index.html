@@ -334,7 +334,7 @@
             <div class="section-content">
                 <h2>We Value Your Input</h2>
                 <p>What would you want for your shared flat? What's your ideal student housing solution? Tell us, and we'll do everything in our power to make it happen!</p>
-                <form id="feedback-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form id="feedback-form" action="https://formspree.io/f/xeojbzow" method="POST">
                     <input type="email" name="email" placeholder="Your Email" required>
                     <textarea name="message" placeholder="Your ideas and suggestions" required></textarea>
                     <button type="submit" class="btn">Submit Feedback</button>
@@ -427,7 +427,7 @@
                 </div>
     
                 <!-- Registration Form -->
-                <form id="pioneer-registration-form" method="POST">
+                <form id="pioneer-registration-form" action="https://formspree.io/f/xeojbzow" method="POST">
                     <input type="text" name="name" placeholder="First Name" required>
                     <input type="text" name="surname" placeholder="Last Name" required>
                     <input type="email" name="email" placeholder="University Email" required>
@@ -439,7 +439,51 @@
             </div>
         </div>
     </section>
-    
+  </script>
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add the chart initialization code here
+    new Chart(document.getElementById('equity-growth-chart').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['2024', '2025', '2026', '2027', '2028', '2029'],
+            datasets: [{
+                label: 'Jungle Rent Revenue',
+                data: [7401.68, 14737.97, 19529.38, 24206.37, 30361.42, 35152.83],
+                borderColor: '#34C759',
+                tension: 0.1
+            },
+            {
+                label: 'SFP Revenue',
+                data: [42598.32, 135262.03, 180470.62, 225793.63, 269638.58, 314847.17],
+                borderColor: '#5AC8FA',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value, index, values) {
+                            return '€' + value.toLocaleString();
+                        }
+                    }
+                }
+            }
+        }
+    });
+  </script>
 </body>
 </html>
 
