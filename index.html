@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jungle Rent - Revolutionary Student Housing Investment</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Original Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Original Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 
-    <!-- Site Styles -->
+    <!-- Enhanced Site Styles with Bootstrap Integration -->
     <style>
         :root {
             --primary-green: #34C759;
@@ -33,14 +40,18 @@
             background-color: var(--bg-black);
             color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Enhanced Container with Bootstrap compatibility */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
         }
 
+        /* Enhanced Header with Bootstrap navbar integration */
         header {
             position: fixed;
             top: 0;
@@ -49,6 +60,7 @@
             z-index: 1000;
             background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
         }
 
         nav {
@@ -56,6 +68,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
+            position: relative;
         }
 
         .logo {
@@ -63,11 +76,14 @@
             font-weight: 600;
             cursor: pointer;
             color: var(--primary-green);
+            z-index: 1001;
         }
 
         .nav-links {
             display: flex;
             gap: 30px;
+            align-items: center;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
@@ -75,32 +91,53 @@
             text-decoration: none;
             font-weight: 400;
             transition: color 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--primary-green);
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced Section Styling */
         section {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 100px 0;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Enhanced Typography with Bootstrap compatibility */
         h1, h2 {
-            font-size: 48px;
+            font-size: clamp(36px, 5vw, 48px);
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.2;
         }
 
         p {
-            font-size: 18px;
+            font-size: clamp(16px, 2vw, 18px);
             margin-bottom: 30px;
         }
 
+        /* Enhanced Button Styling */
         .btn {
             display: inline-block;
             background-color: var(--primary-green);
@@ -112,6 +149,21 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
         }
 
         .btn:hover {
@@ -120,34 +172,69 @@
             box-shadow: 0 10px 20px rgba(52, 199, 89, 0.2);
         }
 
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Enhanced Section Content */
         .section-content {
             max-width: 600px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Enhanced Background Styling */
         #hero {
             background: linear-gradient(45deg, var(--bg-black), var(--bg-dark));
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(52, 199, 89, 0.1) 0%, transparent 70%);
         }
 
         #business-model, #investors, #students, #data-visualization, #feedback, #calculator, #pioneer-adopter {
             background-color: var(--bg-dark);
+            position: relative;
         }
 
+        /* Enhanced Features Grid */
         .features {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-bottom: 40px;
-            flex-wrap: wrap;
+            padding: 20px;
         }
 
         .feature {
-            flex-basis: 30%;
             text-align: center;
             padding: 30px;
             background-color: rgba(52, 199, 89, 0.1);
             border-radius: 15px;
-            margin-bottom: 20px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(52, 199, 89, 0.1));
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
 
         .feature:hover {
@@ -155,20 +242,31 @@
             box-shadow: 0 15px 30px rgba(52, 199, 89, 0.2);
         }
 
+        .feature:hover::before {
+            transform: translateY(0);
+        }
+
         .feature h3 {
             font-size: 24px;
             margin-bottom: 10px;
             color: var(--primary-green);
+            position: relative;
         }
 
         .feature p {
             font-size: 16px;
+            position: relative;
         }
 
+        /* Enhanced Chart Container */
         .chart-container {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         #equity-growth-chart {
@@ -176,7 +274,8 @@
             height: 400px;
         }
 
-        input[type="email"], input[type="text"], input[type="number"], textarea {
+        /* Enhanced Form Elements */
+        .form-control {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
@@ -185,23 +284,44 @@
             background-color: rgba(255, 255, 255, 0.1);
             color: var(--text-color);
             font-size: 16px;
+            transition: all 0.3s ease;
         }
 
-        textarea {
+        .form-control:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px var(--primary-green);
+        }
+
+        textarea.form-control {
             height: 150px;
             resize: vertical;
         }
 
+        /* Enhanced Footer */
         footer {
             background-color: var(--bg-dark);
             padding: 50px 0;
             text-align: center;
+            position: relative;
         }
 
-        /* Dashboard styles */
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+        }
+
+        /* Enhanced Dashboard Styles */
         .dashboard-container {
             padding: 2rem;
             background-color: var(--bg-dark);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .dashboard-grid {
@@ -215,526 +335,775 @@
             background-color: rgba(52, 199, 89, 0.1);
             border-radius: 15px;
             padding: 1.5rem;
+            transition: all 0.3s ease;
         }
 
-        /* Pioneer Registration Form specific styles */
-        #pioneer-registration-form input[name="name"],
-        #pioneer-registration-form input[name="surname"], 
-        #pioneer-registration-form input[name="university"],
-        #pioneer-registration-form input[name="age"] {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: #ffffff;
-            background-color: rgba(255, 255, 255, 0.1);
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(52, 199, 89, 0.1);
+        }
+
+        /* Bootstrap Responsive Navigation Enhancements */
+        .navbar-toggler {
+            display: none;
             border: 2px solid var(--primary-green);
-            padding: 15px;
-            border-radius: 10px;
-            transition: border-color 0.3s ease;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: transparent;
+            cursor: pointer;
+            z-index: 1001;
         }
 
-        #pioneer-registration-form input[name="name"]:focus,
-        #pioneer-registration-form input[name="surname"]:focus,
-        #pioneer-registration-form input[name="university"]:focus,
-        #pioneer-registration-form input[name="age"]:focus {
-            border-color: var(--light-green);
+        .navbar-toggler-icon {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary-green);
+            position: relative;
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            h1, h2 {
-                font-size: 36px;
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary-green);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler-icon::before {
+            top: -6px;
+        }
+
+        .navbar-toggler-icon::after {
+            bottom: -6px;
+        }
+
+        .navbar-toggler.active .navbar-toggler-icon {
+            background-color: transparent;
+        }
+
+        .navbar-toggler.active .navbar-toggler-icon::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .navbar-toggler.active .navbar-toggler-icon::after {
+            transform: rotate(-45deg);
+            bottom: 0;
+        }
+
+        /* Mobile Responsive Enhancements */
+        @media (max-width: 991.98px) {
+            .container {
+                padding: 0 15px;
             }
 
-            .feature {
-                flex-basis: 100%;
+            .features {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar-toggler {
+                display: block;
             }
 
             .nav-links {
                 display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
             }
 
-            .dashboard-grid {
-                grid-template-columns: 1fr;
+            .nav-links.active {
+                display: flex;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .feature {
+                padding: 20px;
+            }
+
+            .chart-container {
+                padding: 15px;
+            }
+
+            #equity-growth-chart {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            h1, h2 {
+                font-size: 32px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .feature h3 {
+                font-size: 20px;
+            }
+
+            .feature p {
+                font-size: 14px;
+            }
+        }
+
+        /* Print Media Query */
+        @media print {
+            header {
+                position: static;
+                background: none;
+            }
+
+            section {
+                min-height: auto;
+                page-break-inside: avoid;
+            }
+
+            .btn {
+                border: 2px solid var(--primary-green);
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary-green: #00FF00;
+                --text-color: #FFFFFF;
+                --bg-black: #000000;
+            }
+
+            .btn {
+                border: 2px solid var(--primary-green);
+            }
+        }
+        /* Prefers Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Enhanced Form Specific Styles */
+        #pioneer-registration-form input[type="text"],
+        #pioneer-registration-form input[type="email"],
+        #pioneer-registration-form input[type="number"] {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--primary-green);
+            padding: 15px;
+            border-radius: 10px;
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #pioneer-registration-form input:focus,
+        #pioneer-registration-form textarea:focus {
+            border-color: var(--light-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 199, 89, 0.1);
+        }
+
+        /* Loading States */
+        .loading {
+            position: relative;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            margin: -12px 0 0 -12px;
+            border: 2px solid var(--primary-green);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Jungle Rent</div>
-            <div class="nav-links">
-                <a href="#hero">Home</a>
-                <a href="#business-model">How It Works</a>
-                <a href="#investors">Investors</a>
-                <a href="#students">Students</a>
-                <a href="#data-visualization">Stats</a>
-                <a href="#calculator">Calculator</a>
-                <a href="#pioneer-adopter">Pioneer Program</a>
-                <a href="#feedback">Feedback</a>
-                <a href="#dashboard">Dashboard</a>
+    <!-- Enhanced Bootstrap Navbar -->
+    <header class="fixed-top">
+        <nav class="container navbar navbar-expand-lg">
+            <div class="logo navbar-brand">Jungle Rent</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="nav-links navbar-nav ms-auto">
+                    <a class="nav-link" href="#hero">Home</a>
+                    <a class="nav-link" href="#business-model">How It Works</a>
+                    <a class="nav-link" href="#investors">Investors</a>
+                    <a class="nav-link" href="#students">Students</a>
+                    <a class="nav-link" href="#data-visualization">Stats</a>
+                    <a class="nav-link" href="#calculator">Calculator</a>
+                    <a class="nav-link" href="#pioneer-adopter">Pioneer Program</a>
+                    <a class="nav-link" href="#feedback">Feedback</a>
+                    <a class="nav-link" href="#dashboard">Dashboard</a>
+                </div>
             </div>
         </nav>
     </header>
 
-    <section id="hero">
+    <!-- Enhanced Hero Section -->
+    <section id="hero" class="d-flex align-items-center">
         <div class="container">
-            <div class="section-content">
-                <h1>Revolutionary Student Housing Investment</h1>
-                <p>Experience the future of student living and smart investing with Jungle Rent. We connect affordable housing with intelligent investments, creating value for both students and investors.</p>
-                <a href="#business-model" class="btn">Discover Our Model</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="business-model">
-        <div class="container">
-            <h2>How Jungle Rent Works</h2>
-            <p>Our innovative model revolutionizes student housing and real estate investment through tokenization and smart management.</p>
-            <div class="features">
-                <div class="feature">
-                    <h3>Tokenization</h3>
-                    <p>We use SFP to divide property investments into accessible shares, starting from €50.</p>
-                </div>
-                <div class="feature">
-                    <h3>Hybrid Rental</h3>
-                    <p>Innovative approach to housing solutions.</p>
-                </div>
-                <div class="feature">
-                    <h3>Student-Friendly</h3>
-                    <p>Below-market rents with flexible options for students.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="investors">
-        <div class="container">
-            <div class="section-content">
-                <h2>Invest Smarter</h2>
-                <p>Join the real estate revolution. Invest in student housing with only €50 and earn passive income while supporting affordable student living.</p>
-                <div class="features">
-                    <div class="feature">
-                        <h3>Low Entry</h3>
-                        <p>Start with just €50</p>
-                    </div>
-                    <div class="feature">
-                        <h3>High Yield</h3>
-                        <p>13% target gross return</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Diversify</h3>
-                        <p>Spread risk easily</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-content text-center">
+                        <h1 class="display-4 fw-bold mb-4">Revolutionary Student Housing Investment</h1>
+                        <p class="lead mb-4">Experience the future of student living and smart investing with Jungle Rent. We connect affordable housing with intelligent investments, creating value for both students and investors.</p>
+                        <a href="#business-model" class="btn btn-lg">Discover Our Model</a>
                     </div>
                 </div>
-                <a href="#feedback" class="btn">Start Investing</a>
             </div>
         </div>
     </section>
 
-    <section id="students">
+    <!-- Enhanced Business Model Section -->
+    <section id="business-model" class="py-5">
         <div class="container">
-            <div class="section-content">
-                <h2>Live Smarter</h2>
-                <p>Enjoy affordable, high-quality housing throughout your university years. Benefit from our innovative approach to student living.</p>
-                <div class="features">
-                    <div class="feature">
-                        <h3>Affordable</h3>
-                        <p>Pay for 9 months, not 12</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Flexible</h3>
-                        <p>Options tailored for students</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Quality Living</h3>
-                        <p>Well-maintained homes</p>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold">How Jungle Rent Works</h2>
+                    <p class="lead">Our innovative model revolutionizes student housing and real estate investment through tokenization and smart management.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature h-100">
+                        <h3>Tokenization</h3>
+                        <p>We use SFP to divide property investments into accessible shares, starting from €50.</p>
                     </div>
                 </div>
-                <a href="#feedback" class="btn">Join Waitlist</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="data-visualization">
-        <div class="container">
-            <h2>Our Growth</h2>
-            <p>See how Jungle Rent is revolutionizing the student housing market and creating value for investors.</p>
-            <div class="chart-container">
-                <canvas id="equity-growth-chart"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <section id="calculator">
-        <div class="container">
-            <div class="section-content">
-                <h2>Calculate Your Advantage</h2>
-                <p>Use our calculator to discover the potential returns on your investment or savings on your rent.</p>
-                <div id="calculator-root"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pioneer-adopter">
-        <div class="container">
-            <div class="section-content">
-                <h2>Become a Pioneer Adopter</h2>
-                <p>Join the Jungle Rent Pioneer Adopter program and become an ambassador for our revolutionary student housing solution. As a Pioneer Adopter, you'll have the chance to win up to 4 months of rent-free living while helping us spread the word about Jungle Rent.</p>
-    
-                <div class="features">
-                    <div class="feature">
-                        <h3>Exclusive Benefits</h3>
-                        <p>Win up to 4 months rent-free, gain access to exclusive events, and be featured on our platform.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Ambassador Responsibilities</h3>
-                        <p>Promote Jungle Rent on your campus, engage with other students, and help us grow our community.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>How to Apply</h3>
-                        <p>Fill out the form below to register your interest. We'll contact you with more details about the selection process.</p>
+                <div class="col-md-4">
+                    <div class="feature h-100">
+                        <h3>Hybrid Rental</h3>
+                        <p>Innovative approach to housing solutions.</p>
                     </div>
                 </div>
-    
-                <form id="pioneer-registration-form" action="https://formspree.io/f/xeojbzow" method="POST">
-                    <input type="text" name="name" placeholder="First Name" required>
-                    <input type="text" name="surname" placeholder="Last Name" required>
-                    <input type="email" name="email" placeholder="University Email" required>
-                    <input type="text" name="university" placeholder="University Name" required>
-                    <input type="number" name="age" placeholder="Age" required>
-                    <textarea name="motivation" placeholder="Why do you want to become a Jungle Rent Pioneer (JRP)?" required></textarea>
-                    <button type="submit" class="btn">Apply Now</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section id="dashboard">
-        <div class="container">
-            <div class="section-content">
-                <h2>Investor Dashboard</h2>
-                <p>Monitor your investments and view real-time performance.</p>
-                <div id="dashboard-root"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="feedback">
-        <div class="container">
-            <div
-            <div class="section-content">
-                <h2>We Value Your Input</h2>
-                <p>What would you want for your shared flat? What's your ideal student housing solution? Tell us, and we'll do everything in our power to make it happen!</p>
-                <form id="feedback-form" action="https://formspree.io/f/xeojbzow" method="POST">
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" placeholder="Your ideas and suggestions" required></textarea>
-                    <button type="submit" class="btn">Submit Feedback</button>
-                </form>
-                <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
-                    <a href="tel:+3933190353037" class="btn">Contact Co-founder Lorenzo Oni-Joseph: +3933190353037</a>
-                    <a href="tel:+393899135932" class="btn">Contact Co-founder Andrea Niccolaini: +393899135932</a>
+                <div class="col-md-4">
+                    <div class="feature h-100">
+                        <h3>Student-Friendly</h3>
+                        <p>Below-market rents with flexible options for students.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Enhanced Investors Section -->
+    <section id="investors" class="py-5">
         <div class="container">
-            <p>Contact us: <a href="mailto:junglerententerprise@gmail.com" style="color: var(--primary-green); text-decoration: none;">junglerententerprise@gmail.com</a></p>
-            <p>&copy; 2024 Jungle Rent. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Calculator and Dashboard React Components -->
-    <script type="text/babel">
-        // Calculator Component
-        const Calculator = () => {
-            const [calculatorType, setCalculatorType] = React.useState('investment');
-            const [investment, setInvestment] = React.useState('');
-            const [rentAmount, setRentAmount] = React.useState('');
-            const [result, setResult] = React.useState(null);
-
-            const calculateInvestmentReturn = () => {
-                const amount = parseFloat(investment);
-                if (isNaN(amount) || amount < 50) {
-                    setResult({
-                        error: "The minimum investment is €50"
-                    });
-                    return;
-                }
-
-                const annualReturn = amount * 0.13;
-                const monthlyReturn = annualReturn / 12;
-
-                setResult({
-                    annualReturn: annualReturn.toFixed(2),
-                    monthlyReturn: monthlyReturn.toFixed(2),
-                    totalValue: (amount + annualReturn).toFixed(2)
-                });
-            };
-
-            const calculateRentSavings = () => {
-                const monthlyRent = parseFloat(rentAmount);
-                
-                if (isNaN(monthlyRent)) {
-                    setResult({
-                        error: "Please enter a valid monthly rent"
-                    });
-                    return;
-                }
-
-                const traditionalYearlyCost = monthlyRent * 12;
-                const jungleRentYearlyCost = monthlyRent * 9;
-                const yearlySavings = traditionalYearlyCost - jungleRentYearlyCost;
-                const effectiveMonthlyRate = jungleRentYearlyCost / 12;
-                const savingsPercentage = ((traditionalYearlyCost - jungleRentYearlyCost) / traditionalYearlyCost) * 100;
-
-                setResult({
-                    traditionalYearly: traditionalYearlyCost.toFixed(2),
-                    jungleRentYearly: jungleRentYearlyCost.toFixed(2),
-                    yearlySavings: yearlySavings.toFixed(2),
-                    effectiveMonthlyRate: effectiveMonthlyRate.toFixed(2),
-                    savingsPercentage: savingsPercentage.toFixed(1)
-                });
-            };
-
-            return (
-                <div style={{
-                    width: '100%',
-                    maxWidth: '600px',
-                    margin: '0 auto',
-                    backgroundColor: '#1C1C1E',
-                    borderRadius: '12px',
-                    padding: '24px',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                }}>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        gap: '16px',
-                        marginBottom: '24px'
-                    }}>
-                        <button
-                            onClick={() => setCalculatorType('investment')}
-                            style={{
-                                padding: '12px 24px',
-                                borderRadius: '8px',
-                                border: 'none',
-                                cursor: 'pointer',
-                                backgroundColor: calculatorType === 'investment' ? '#34C759' : '#333',
-                                color: calculatorType === 'investment' ? 'white' : 'white'
-                            }}
-                        >
-                            Calculate Investment Return
-                        </button>
-                        <button
-                            onClick={() => setCalculatorType('rent')}
-                            style={{
-                                padding: '12px 24px',
-                                borderRadius: '8px',
-                                border: 'none',
-                                cursor: 'pointer',
-                                backgroundColor: calculatorType === 'rent' ? '#34C759' : '#333',
-                                color: calculatorType === 'rent' ? 'white' : 'white'
-                            }}
-                        >
-                            Calculate Rent Savings
-                        </button>
-                    </div>
-
-                    {calculatorType === 'investment' ? (
-                        <div>
-                            <div style={{ marginBottom: '20px' }}>
-                                <label style={{ display: 'block', marginBottom: '8px', color: 'white' }}>
-                                    Investment Amount (€)
-                                </label>
-                                <input
-                                    type="number"
-                                    min="50"
-                                    value={investment}
-                                    onChange={(e) => setInvestment(e.target.value)}
-                                    style={{
-                                        width: '100%',
-                                        padding: '12px',
-                                        borderRadius: '8px',
-                                        backgroundColor: '#333',
-                                        border: '1px solid #444',
-                                        color: 'white'
-                                    }}
-                                    placeholder="Minimum €50"
-                                />
-                            </div>
-                            <button
-                                onClick={calculateInvestmentReturn}
-                                style={{
-                                    width: '100%',
-                                    padding: '12px',
-                                    borderRadius: '8px',
-                                    backgroundColor: '#34C759',
-                                    border: 'none',
-                                    color: 'white',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                Calculate Return
-                            </button>
-                            {result && !result.error && (
-                                <div style={{
-                                    marginTop: '20px',
-                                    padding: '16px',
-                                    backgroundColor: '#333',
-                                    borderRadius: '8px'
-                                }}>
-                                    <h3 style={{ marginBottom: '12px', color: 'white' }}>Investment Results</h3>
-                                    <p style={{ color: 'white' }}>Annual Return: €{result.annualReturn}</p>
-                                    <p style={{ color: 'white' }}>Monthly Return: €{result.monthlyReturn}</p>
-                                    <p style={{ color: 'white' }}>Total Value after 1 year: €{result.totalValue}</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-content text-center">
+                        <h2 class="display-5 fw-bold mb-4">Invest Smarter</h2>
+                        <p class="lead mb-5">Join the real estate revolution. Invest in student housing with only €50 and earn passive income while supporting affordable student living.</p>
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="feature h-100">
+                                    <h3>Low Entry</h3>
+                                    <p>Start with just €50</p>
                                 </div>
-                            )}
-                        </div>
-                    ) : (
-                        <div>
-                            <div style={{ marginBottom: '20px' }}>
-                                <label style={{ display: 'block', marginBottom: '8px', color: 'white' }}>
-                                    Monthly Rent (€)
-                                </label>
-                                <input
-                                    type="number"
-                                    value={rentAmount}
-                                    onChange={(e) => setRentAmount(e.target.value)}
-                                    style={{
-                                        width: '100%',
-                                        padding: '12px',
-                                        borderRadius: '8px',
-                                        backgroundColor: '#333',
-                                        border: '1px solid #444',
-                                        color: 'white'
-                                    }}
-                                    placeholder="Enter monthly rent"
-                                />
                             </div>
-                            <button
-                                onClick={calculateRentSavings}
-                                style={{
-                                    width: '100%',
-                                    padding: '12px',
-                                    borderRadius: '8px',
-                                    backgroundColor: '#34C759',
-                                    border: 'none',
-                                    color: 'white',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                Calculate Savings
-                            </button>
-                            {result && !result.error && (
-                                <div style={{
-                                    marginTop: '20px',
-                                    padding: '16px',
-                                    backgroundColor: '#333',
-                                    borderRadius: '8px',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '12px'
-                                }}>
-                                    <h3 style={{ color: 'white' }}>Cost Comparison</h3>
-                                    <div style={{
-                                        padding: '12px',
-                                        backgroundColor: '#444',
-                                        borderRadius: '8px'
-                                    }}>
-                                        <p style={{ color: '#aaa', fontSize: '14px' }}>Traditional Rent (12 months)</p>
-                                        <p style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
-                                            €{result.traditionalYearly}/year
-                                        </p>
-                                    </div>
-                                    <div style={{
-                                        padding: '12px',
-                                        backgroundColor: '#1a472a',
-                                        borderRadius: '8px'
-                                    }}>
-                                        <p style={{ color: '#aaa', fontSize: '14px' }}>Jungle Rent (9 months)</p>
-                                        <p style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
-                                            €{result.jungleRentYearly}/year
-                                        </p>
-                                    </div>
-                                    <div style={{
-                                        padding: '12px',
-                                        backgroundColor: '#1a2847',
-                                        borderRadius: '8px'
-                                    }}>
-                                        <p style={{ color: '#aaa', fontSize: '14px' }}>Your Savings</p>
-                                        <p style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
-                                            €{result.yearlySavings}/year ({result.savingsPercentage}%)
-                                        </p>
-                                        <p style={{ color: '#aaa', fontSize: '14px', marginTop: '4px' }}>
-                                            Effective monthly rate: €{result.effectiveMonthlyRate}/month
-                                        </p>
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="feature h-100">
+                                    <h3>High Yield</h3>
+                                    <p>13% target gross return</p>
                                 </div>
-                            )}
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature h-100">
+                                    <h3>Diversify</h3>
+                                    <p>Spread risk easily</p>
+                                </div>
+                            </div>
                         </div>
-                    )}
+                        <a href="#feedback" class="btn btn-lg">Start Investing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Students Section -->
+    <section id="students" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-content text-center">
+                        <h2 class="display-5 fw-bold mb-4">Live Smarter</h2>
+                        <p class="lead mb-5">Enjoy affordable, high-quality housing throughout your university years. Benefit from our innovative approach to student living.</p>
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="feature h-100">
+                                    <h3>Affordable</h3>
+                                    <p>Pay for 9 months, not 12</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature h-100">
+                                    <h3>Flexible</h3>
+                                    <p>Options tailored for students</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature h-100">
+                                    <h3>Quality Living</h3>
+                                    <p>Well-maintained homes</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#feedback" class="btn btn-lg">Join Waitlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Data Visualization Section -->
+    <section id="data-visualization" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <h2 class="display-5 fw-bold">Our Growth</h2>
+                        <p class="lead">See how Jungle Rent is revolutionizing the student housing market and creating value for investors.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="equity-growth-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Calculator Section -->
+    <section id="calculator" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-content text-center">
+                        <h2 class="display-5 fw-bold mb-4">Calculate Your Advantage</h2>
+                        <p class="lead mb-5">Use our calculator to discover the potential returns on your investment or savings on your rent.</p>
+                        <div id="calculator-root"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continue with Pioneer Adopter, Dashboard, and Feedback sections... -->
+<!-- Enhanced Pioneer Adopter Section -->
+<section id="pioneer-adopter" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-content">
+                    <h2 class="display-5 fw-bold text-center mb-4">Become a Pioneer Adopter</h2>
+                    <p class="lead text-center mb-5">Join the Jungle Rent Pioneer Adopter program and become an ambassador for our revolutionary student housing solution. As a Pioneer Adopter, you'll have the chance to win up to 4 months of rent-free living while helping us spread the word about Jungle Rent.</p>
+
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-4">
+                            <div class="feature h-100">
+                                <h3>Exclusive Benefits</h3>
+                                <p>Win up to 4 months rent-free, gain access to exclusive events, and be featured on our platform.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature h-100">
+                                <h3>Ambassador Responsibilities</h3>
+                                <p>Promote Jungle Rent on your campus, engage with other students, and help us grow our community.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature h-100">
+                                <h3>How to Apply</h3>
+                                <p>Fill out the form below to register your interest. We'll contact you with more details about the selection process.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="pioneer-registration-form" action="https://formspree.io/f/xeojbzow" method="POST" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name" placeholder="First Name" required>
+                                <div class="invalid-feedback">Please provide your first name.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="surname" placeholder="Last Name" required>
+                                <div class="invalid-feedback">Please provide your last name.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" placeholder="University Email" required>
+                                <div class="invalid-feedback">Please provide a valid university email.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="university" placeholder="University Name" required>
+                                <div class="invalid-feedback">Please provide your university name.</div>
+                            </div>
+                            <div class="col-12">
+                                <input type="number" class="form-control" name="age" placeholder="Age" required min="18">
+                                <div class="invalid-feedback">Please provide your age (must be 18 or older).</div>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" name="motivation" placeholder="Why do you want to become a Jungle Rent Pioneer (JRP)?" required rows="5"></textarea>
+                                <div class="invalid-feedback">Please tell us why you want to join.</div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-lg w-100">Apply Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Dashboard Section -->
+<section id="dashboard" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-content text-center">
+                    <h2 class="display-5 fw-bold mb-4">Investor Dashboard</h2>
+                    <p class="lead mb-5">Monitor your investments and view real-time performance.</p>
+                    <div id="dashboard-root" class="dashboard-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Feedback Section -->
+<section id="feedback" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-content">
+                    <h2 class="display-5 fw-bold text-center mb-4">We Value Your Input</h2>
+                    <p class="lead text-center mb-5">What would you want for your shared flat? What's your ideal student housing solution? Tell us, and we'll do everything in our power to make it happen!</p>
                     
-                    {result && result.error && (
-                        <div style={{
-                            marginTop: '20px',
-                            padding: '16px',
-                            backgroundColor: '#cc0000',
-                            borderRadius: '8px',
-                            color: 'white'
-                        }}>
-                            {result.error}
+                    <form id="feedback-form" action="https://formspree.io/f/xeojbzow" method="POST" class="needs-validation mb-5" novalidate>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                            <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
-                    )}
+                        <div class="mb-3">
+                            <textarea class="form-control" name="message" placeholder="Your ideas and suggestions" required rows="5"></textarea>
+                            <div class="invalid-feedback">Please share your ideas with us.</div>
+                        </div>
+                        <button type="submit" class="btn btn-lg w-100">Submit Feedback</button>
+                    </form>
+
+                    <div class="d-grid gap-3">
+                        <a href="tel:+3933190353037" class="btn btn-lg">Contact Co-founder Lorenzo Oni-Joseph: +3933190353037</a>
+                        <a href="tel:+393899135932" class="btn btn-lg">Contact Co-founder Andrea Niccolaini: +393899135932</a>
+                    </div>
                 </div>
-            );
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Footer -->
+<footer class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <p class="mb-3">Contact us: <a href="mailto:junglerententerprise@gmail.com" class="text-success text-decoration-none">junglerententerprise@gmail.com</a></p>
+                <p class="mb-0">&copy; 2024 Jungle Rent. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Original Calculator and Dashboard React Components -->
+<script type="text/babel">
+    // Calculator Component
+    const Calculator = () => {
+        const [calculatorType, setCalculatorType] = React.useState('investment');
+        const [investment, setInvestment] = React.useState('');
+        const [rentAmount, setRentAmount] = React.useState('');
+        const [result, setResult] = React.useState(null);
+
+        const calculateInvestmentReturn = () => {
+            const amount = parseFloat(investment);
+            if (isNaN(amount) || amount < 50) {
+                setResult({
+                    error: "The minimum investment is €50"
+                });
+                return;
+            }
+
+            const annualReturn = amount * 0.13;
+            const monthlyReturn = annualReturn / 12;
+
+            setResult({
+                annualReturn: annualReturn.toFixed(2),
+                monthlyReturn: monthlyReturn.toFixed(2),
+                totalValue: (amount + annualReturn).toFixed(2)
+            });
         };
 
-        // Dashboard Component
-        const InvestorDashboard = () => {
-            return (
-                <div style={{ color: 'white' }}>
-                    <h3>Dashboard Coming Soon</h3>
-                    <p>We are working hard to bring you the best dashboard experience. Stay tuned!</p>
-                </div>
-            );
+        const calculateRentSavings = () => {
+            const monthlyRent = parseFloat(rentAmount);
+            
+            if (isNaN(monthlyRent)) {
+                setResult({
+                    error: "Please enter a valid monthly rent"
+                });
+                return;
+            }
+
+            const traditionalYearlyCost = monthlyRent * 12;
+            const jungleRentYearlyCost = monthlyRent * 9;
+            const yearlySavings = traditionalYearlyCost - jungleRentYearlyCost;
+            const effectiveMonthlyRate = jungleRentYearlyCost / 12;
+            const savingsPercentage = ((traditionalYearlyCost - jungleRentYearlyCost) / traditionalYearlyCost) * 100;
+
+            setResult({
+                traditionalYearly: traditionalYearlyCost.toFixed(2),
+                jungleRentYearly: jungleRentYearlyCost.toFixed(2),
+                yearlySavings: yearlySavings.toFixed(2),
+                effectiveMonthlyRate: effectiveMonthlyRate.toFixed(2),
+                savingsPercentage: savingsPercentage.toFixed(1)
+            });
         };
 
-        // Render Components
-        ReactDOM.render(<Calculator />, document.getElementById('calculator-root'));
-        ReactDOM.render(<InvestorDashboard />, document.getElementById('dashboard-root'));
-    </script>
+        return (
+            <div className="calculator-container rounded p-4">
+                <div className="d-flex flex-column flex-md-row justify-content-center gap-3 mb-4">
+                    <button
+                        onClick={() => setCalculatorType('investment')}
+                        className={`btn ${calculatorType === 'investment' ? 'btn-success' : 'btn-outline-secondary'}`}
+                    >
+                        Calculate Investment Return
+                    </button>
+                    <button
+                        onClick={() => setCalculatorType('rent')}
+                        className={`btn ${calculatorType === 'rent' ? 'btn-success' : 'btn-outline-secondary'}`}
+                    >
+                        Calculate Rent Savings
+                    </button>
+                </div>
 
-    <!-- Chart.js Initialization -->
-    <script>
-        // Initialize the chart
-        const ctx = document.getElementById('equity-growth-chart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['2024', '2025', '2026', '2027', '2028', '2029'],
-                datasets: [{
-                    label: 'Jungle Rent Revenue',
-                    data: [7401.68, 14737.97, 19529.38, 24206.37, 30361.42, 35152.83],
-                    borderColor: '#34C759',
-                    tension: 0.1
-                },
-                {
-                    label: 'SFP Revenue',
-                    data: [42598.32, 135262.03, 180470.62, 225793.63, 269638.58, 314847.17],
-                    borderColor: '#5AC8FA',
-                    tension: 0.1
-                }]
+                {calculatorType === 'investment' ? (
+                    <div>
+                        <div className="mb-3">
+                            <label className="form-label">Investment Amount (€)</label>
+                            <input
+                                type="number"
+                                min="50"
+                                value={investment}
+                                onChange={(e) => setInvestment(e.target.value)}
+                                className="form-control"
+                                placeholder="Minimum €50"
+                            />
+                        </div>
+                        <button
+                            onClick={calculateInvestmentReturn}
+                            className="btn btn-success w-100"
+                        >
+                            Calculate Return
+                        </button>
+                        {result && !result.error && (
+                            <div className="mt-4 p-3 bg-dark rounded">
+                                <h3 className="h4 mb-3">Investment Results</h3>
+                                <p className="mb-2">Annual Return: €{result.annualReturn}</p>
+                                <p className="mb-2">Monthly Return: €{result.monthlyReturn}</p>
+                                <p className="mb-0">Total Value after 1 year: €{result.totalValue}</p>
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <div>
+                        <div className="mb-3">
+                            <label className="form-label">Monthly Rent (€)</label>
+                            <input
+                                type="number"
+                                value={rentAmount}
+                                onChange={(e) => setRentAmount(e.target.value)}
+                                className="form-control"
+                                placeholder="Enter monthly rent"
+                            />
+                        </div>
+                        <button
+                            onClick={calculateRentSavings}
+                            className="btn btn-success w-100"
+                        >
+                            Calculate Savings
+                        </button>
+                        {result && !result.error && (
+                            <div className="mt-4">
+                                <h3 className="h4 mb-3">Cost Comparison</h3>
+                                <div className="p-3 bg-dark rounded mb-3">
+                                    <p className="text-muted mb-1">Traditional Rent (12 months)</p>
+                                    <p className="h4 mb-0">€{result.traditionalYearly}/year</p>
+                                </div>
+                                <div className="p-3 bg-success bg-opacity-25 rounded mb-3">
+                                    <p className="text-muted mb-1">Jungle Rent (9 months)</p>
+                                    <p className="h4 mb-0">€{result.jungleRentYearly}/year</p>
+                                </div>
+                                <div className="p-3 bg-primary bg-opacity-25 rounded">
+                                    <p className="text-muted mb-1">Your Savings</p>
+                                    <p className="h4 mb-0">€{result.yearlySavings}/year ({result.savingsPercentage}%)</p>
+                                    <p className="text-muted mt-2 mb-0">
+                                        Effective monthly rate: €{result.effectiveMonthlyRate}/month
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+                
+                {result && result.error && (
+                    <div className="alert alert-danger mt-3">
+                        {result.error}
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+    // Dashboard Component
+    const InvestorDashboard = () => {
+        return (
+            <div className="text-center">
+                <h3 className="h4 mb-3">Dashboard Coming Soon</h3>
+                <p className="mb-0">We are working hard to bring you the best dashboard experience. Stay tuned!</p>
+            </div>
+        );
+    };
+
+    // Render Components
+    ReactDOM.render(<Calculator />, document.getElementById('calculator-root'));
+    ReactDOM.render(<InvestorDashboard />, document.getElementById('dashboard-root'));
+</script>
+
+<!-- Enhanced Chart.js Initialization -->
+<script>
+    const ctx = document.getElementById('equity-growth-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['2024', '2025', '2026', '2027', '2028', '2029'],
+            datasets: [{
+                label: 'Jungle Rent Revenue',
+                data: [7401.68, 14737.97, 19529.38, 24206.37, 30361.42, 35152.83],
+                borderColor: '#34C759',
+                backgroundColor: 'rgba(52, 199, 89, 0.1)',
+                tension: 0.1,
+                fill: true
+            },
+            {
+                label: 'SFP Revenue',
+                data: [42598.32, 135262.03, 180470.62, 225793.63, 269638.58, 314847.17],
+                borderColor: '#5AC8FA',
+                backgroundColor: 'rgba(90, 200, 250, 0.1)',
+                tension: 0.1,
+                fill: true
+            }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#FFFFFF',
+                            font: {
+                                family: "'Inter', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleFont: {
+                            family: "'Inter', sans-serif",
+                            size: 14
+                        },
+                        bodyFont: {
+                            family: "'Inter', sans-serif",
+                            size: 13
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': €' + context.parsed.y.toLocaleString();
+                            }
+                        }
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
                         ticks: {
+                            color: '#FFFFFF',
                             callback: function(value) {
                                 return '€' + value.toLocaleString();
+                            },
+                            font: {
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#FFFFFF',
+                            font: {
+                                family: "'Inter', sans-serif"
                             }
                         }
                     }
@@ -742,27 +1111,137 @@
             }
         });
 
-        // Form Submission Handlers
-        document.getElementById('feedback-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your feedback! We will get back to you soon.');
-            this.submit();
-        });
+        // Enhanced Form Validation and Submission Handlers
+        (() => {
+            'use strict';
 
-        document.getElementById('pioneer-registration-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for applying to the Pioneer Program! We will contact you soon.');
-            this.submit();
-        });
+            // Fetch all forms that need validation
+            const forms = document.querySelectorAll('.needs-validation');
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+            // Handle form submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
             });
+
+            // Enhanced Feedback Form Handler
+            const feedbackForm = document.getElementById('feedback-form');
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function(e) {
+                    if (this.checkValidity()) {
+                        e.preventDefault();
+                        const submitBtn = this.querySelector('button[type="submit"]');
+                        submitBtn.classList.add('loading');
+                        submitBtn.disabled = true;
+
+                        // Simulate form submission delay for better UX
+                        setTimeout(() => {
+                            alert('Thank you for your feedback! We will get back to you soon.');
+                            submitBtn.classList.remove('loading');
+                            submitBtn.disabled = false;
+                            this.submit();
+                        }, 1000);
+                    }
+                });
+            }
+
+            // Enhanced Pioneer Registration Form Handler
+            const pioneerForm = document.getElementById('pioneer-registration-form');
+            if (pioneerForm) {
+                pioneerForm.addEventListener('submit', function(e) {
+                    if (this.checkValidity()) {
+                        e.preventDefault();
+                        const submitBtn = this.querySelector('button[type="submit"]');
+                        submitBtn.classList.add('loading');
+                        submitBtn.disabled = true;
+
+                        // Simulate form submission delay for better UX
+                        setTimeout(() => {
+                            alert('Thank you for applying to the Pioneer Program! We will contact you soon.');
+                            submitBtn.classList.remove('loading');
+                            submitBtn.disabled = false;
+                            this.submit();
+                        }, 1000);
+                    }
+                });
+            }
+        })();
+
+        // Enhanced Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bootstrapCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bootstrapCollapse.hide();
+                    }
+                }
+            });
+        });
+
+        // Enhanced Navbar Behavior
+        (() => {
+            const header = document.querySelector('header');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+
+                // Add/remove background on scroll
+                if (currentScroll > 50) {
+                    header.classList.add('bg-dark');
+                    header.classList.add('shadow');
+                } else {
+                    header.classList.remove('bg-dark');
+                    header.classList.remove('shadow');
+                }
+
+                // Hide/show navbar on scroll
+                if (currentScroll > lastScroll && currentScroll > 500) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+
+                lastScroll = currentScroll;
+            });
+        })();
+
+        // Initialize Bootstrap Tooltips and Popovers
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl);
+        });
+
+        // Handle loading states for dynamic content
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
         });
     </script>
 </body>
