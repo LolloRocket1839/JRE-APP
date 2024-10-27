@@ -5,30 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jungle Rent - Revolutionary Student Housing Investment</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-       /* Apply the cooler font to all First Name and Last Name fields in the form */
-      #pioneer-registration-form input[name="name"],
-      #pioneer-registration-form input[name="surname"], 
-      #pioneer-registration-form input[name="university"],
-      #pioneer-registration-form input[name="age"] {
-         font-family: 'Poppins', sans-serif; /* Use the Poppins font */
-         font-weight: 600; /* Make the font bold */
-         color: #ffffff; /* Make the text color white */
-         background-color: rgba(255, 255, 255, 0.1); /* Light background color */
-         border: 2px solid var(--primary-green); /* Green border */
-         padding: 15px;
-         border-radius: 10px;
-         transition: border-color 0.3s ease;
-        }
-      #pioneer-registration-form input[name="name"]:focus,
-      #pioneer-registration-form input[name="surname"]:focus,
-      #pioneer-registration-form input[name="university"]:focus,
-      #pioneer-registration-form input[name="age"]:focus {
-    border-color: var(--light-green); /* Change border color on focus */
-        }
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 
+    <!-- Site Styles -->
+    <style>
         :root {
             --primary-green: #34C759;
             --dark-green: #30B94D;
@@ -138,14 +122,14 @@
 
         .section-content {
             max-width: 600px;
-            text-align: center; /* Ensure content is centered */
+            text-align: center;
         }
 
         #hero {
             background: linear-gradient(45deg, var(--bg-black), var(--bg-dark));
         }
 
-        #business-model, #investors, #students, #data-visualization, #feedback {
+        #business-model, #investors, #students, #data-visualization, #feedback, #calculator, #pioneer-adopter {
             background-color: var(--bg-dark);
         }
 
@@ -192,13 +176,7 @@
             height: 400px;
         }
 
-        footer {
-            background-color: var(--bg-dark);
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        input[type="email"], textarea {
+        input[type="email"], input[type="text"], input[type="number"], textarea {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
@@ -214,6 +192,53 @@
             resize: vertical;
         }
 
+        footer {
+            background-color: var(--bg-dark);
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        /* Dashboard styles */
+        .dashboard-container {
+            padding: 2rem;
+            background-color: var(--bg-dark);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card {
+            background-color: rgba(52, 199, 89, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        /* Pioneer Registration Form specific styles */
+        #pioneer-registration-form input[name="name"],
+        #pioneer-registration-form input[name="surname"], 
+        #pioneer-registration-form input[name="university"],
+        #pioneer-registration-form input[name="age"] {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--primary-green);
+            padding: 15px;
+            border-radius: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        #pioneer-registration-form input[name="name"]:focus,
+        #pioneer-registration-form input[name="surname"]:focus,
+        #pioneer-registration-form input[name="university"]:focus,
+        #pioneer-registration-form input[name="age"]:focus {
+            border-color: var(--light-green);
+        }
+
         @media (max-width: 768px) {
             h1, h2 {
                 font-size: 36px;
@@ -221,6 +246,14 @@
 
             .feature {
                 flex-basis: 100%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -235,7 +268,10 @@
                 <a href="#investors">Investors</a>
                 <a href="#students">Students</a>
                 <a href="#data-visualization">Stats</a>
+                <a href="#calculator">Calculator</a>
+                <a href="#pioneer-adopter">Pioneer Program</a>
                 <a href="#feedback">Feedback</a>
+                <a href="#dashboard">Dashboard</a>
             </div>
         </nav>
     </header>
@@ -303,7 +339,7 @@
                 <div class="features">
                     <div class="feature">
                         <h3>Affordable</h3>
-                        <p>Below-market rates</p>
+                        <p>Pay for 9 months, not 12</p>
                     </div>
                     <div class="feature">
                         <h3>Flexible</h3>
@@ -329,8 +365,63 @@
         </div>
     </section>
 
+    <section id="calculator">
+        <div class="container">
+            <div class="section-content">
+                <h2>Calculate Your Advantage</h2>
+                <p>Use our calculator to discover the potential returns on your investment or savings on your rent.</p>
+                <div id="calculator-root"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pioneer-adopter">
+        <div class="container">
+            <div class="section-content">
+                <h2>Become a Pioneer Adopter</h2>
+                <p>Join the Jungle Rent Pioneer Adopter program and become an ambassador for our revolutionary student housing solution. As a Pioneer Adopter, you'll have the chance to win up to 4 months of rent-free living while helping us spread the word about Jungle Rent.</p>
+    
+                <div class="features">
+                    <div class="feature">
+                        <h3>Exclusive Benefits</h3>
+                        <p>Win up to 4 months rent-free, gain access to exclusive events, and be featured on our platform.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Ambassador Responsibilities</h3>
+                        <p>Promote Jungle Rent on your campus, engage with other students, and help us grow our community.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>How to Apply</h3>
+                        <p>Fill out the form below to register your interest. We'll contact you with more details about the selection process.</p>
+                    </div>
+                </div>
+    
+                <form id="pioneer-registration-form" action="https://formspree.io/f/xeojbzow" method="POST">
+                    <input type="text" name="name" placeholder="First Name" required>
+                    <input type="text" name="surname" placeholder="Last Name" required>
+                    <input type="email" name="email" placeholder="University Email" required>
+                    <input type="text" name="university" placeholder="University Name" required>
+                    <input type="number" name="age" placeholder="Age" required>
+                    <textarea name="motivation" placeholder="Why do you want to become a Jungle Rent Pioneer (JRP)?" required></textarea>
+                    <button type="submit" class="btn">Apply Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard">
+        <div class="container">
+            <div class="section-content">
+                <h2>Investor Dashboard</h2>
+                <p>Monitor your investments and view real-time performance.</p>
+                <div id="dashboard-root"></div>
+            </div>
+        </div>
+    </section>
+
     <section id="feedback">
         <div class="container">
+            <div
             <div class="section-content">
                 <h2>We Value Your Input</h2>
                 <p>What would you want for your shared flat? What's your ideal student housing solution? Tell us, and we'll do everything in our power to make it happen!</p>
@@ -339,8 +430,10 @@
                     <textarea name="message" placeholder="Your ideas and suggestions" required></textarea>
                     <button type="submit" class="btn">Submit Feedback</button>
                 </form>
-                <a href="tel:+3933190353037" class="btn" style="margin-top: 20px;">Contact +3933190353037 Lorenzo Oni-Joseph</a>
-                </form>
+                <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
+                    <a href="tel:+3933190353037" class="btn">Contact Co-founder Lorenzo Oni-Joseph: +3933190353037</a>
+                    <a href="tel:+393899135932" class="btn">Contact Co-founder Andrea Niccolaini: +393899135932</a>
+                </div>
             </div>
         </div>
     </section>
@@ -352,17 +445,269 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    <!-- Calculator and Dashboard React Components -->
+    <script type="text/babel">
+        // Calculator Component
+        const Calculator = () => {
+            const [calculatorType, setCalculatorType] = React.useState('investment');
+            const [investment, setInvestment] = React.useState('');
+            const [rentAmount, setRentAmount] = React.useState('');
+            const [result, setResult] = React.useState(null);
 
+            const calculateInvestmentReturn = () => {
+                const amount = parseFloat(investment);
+                if (isNaN(amount) || amount < 50) {
+                    setResult({
+                        error: "The minimum investment is €50"
+                    });
+                    return;
+                }
+
+                const annualReturn = amount * 0.13;
+                const monthlyReturn = annualReturn / 12;
+
+                setResult({
+                    annualReturn: annualReturn.toFixed(2),
+                    monthlyReturn: monthlyReturn.toFixed(2),
+                    totalValue: (amount + annualReturn).toFixed(2)
+                });
+            };
+
+            const calculateRentSavings = () => {
+                const monthlyRent = parseFloat(rentAmount);
+                
+                if (isNaN(monthlyRent)) {
+                    setResult({
+                        error: "Please enter a valid monthly rent"
+                    });
+                    return;
+                }
+
+                const traditionalYearlyCost = monthlyRent * 12;
+                const jungleRentYearlyCost = monthlyRent * 9;
+                const yearlySavings = traditionalYearlyCost - jungleRentYearlyCost;
+                const effectiveMonthlyRate = jungleRentYearlyCost / 12;
+                const savingsPercentage = ((traditionalYearlyCost - jungleRentYearlyCost) / traditionalYearlyCost) * 100;
+
+                setResult({
+                    traditionalYearly: traditionalYearlyCost.toFixed(2),
+                    jungleRentYearly: jungleRentYearlyCost.toFixed(2),
+                    yearlySavings: yearlySavings.toFixed(2),
+                    effectiveMonthlyRate: effectiveMonthlyRate.toFixed(2),
+                    savingsPercentage: savingsPercentage.toFixed(1)
+                });
+            };
+
+            return (
+                <div style={{
+                    width: '100%',
+                    maxWidth: '600px',
+                    margin: '0 auto',
+                    backgroundColor: '#1C1C1E',
+                    borderRadius: '12px',
+                    padding: '24px',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                }}>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '16px',
+                        marginBottom: '24px'
+                    }}>
+                        <button
+                            onClick={() => setCalculatorType('investment')}
+                            style={{
+                                padding: '12px 24px',
+                                borderRadius: '8px',
+                                border: 'none',
+                                cursor: 'pointer',
+                                backgroundColor: calculatorType === 'investment' ? '#34C759' : '#333',
+                                color: calculatorType === 'investment' ? 'white' : 'white'
+                            }}
+                        >
+                            Calculate Investment Return
+                        </button>
+                        <button
+                            onClick={() => setCalculatorType('rent')}
+                            style={{
+                                padding: '12px 24px',
+                                borderRadius: '8px',
+                                border: 'none',
+                                cursor: 'pointer',
+                                backgroundColor: calculatorType === 'rent' ? '#34C759' : '#333',
+                                color: calculatorType === 'rent' ? 'white' : 'white'
+                            }}
+                        >
+                            Calculate Rent Savings
+                        </button>
+                    </div>
+
+                    {calculatorType === 'investment' ? (
+                        <div>
+                            <div style={{ marginBottom: '20px' }}>
+                                <label style={{ display: 'block', marginBottom: '8px', color: 'white' }}>
+                                    Investment Amount (€)
+                                </label>
+                                <input
+                                    type="number"
+                                    min="50"
+                                    value={investment}
+                                    onChange={(e) => setInvestment(e.target.value)}
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        borderRadius: '8px',
+                                        backgroundColor: '#333',
+                                        border: '1px solid #444',
+                                        color: 'white'
+                                    }}
+                                    placeholder="Minimum €50"
+                                />
+                            </div>
+                            <button
+                                onClick={calculateInvestmentReturn}
+                                style={{
+                                    width: '100%',
+                                    padding: '12px',
+                                    borderRadius: '8px',
+                                    backgroundColor: '#34C759',
+                                    border: 'none',
+                                    color: 'white',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Calculate Return
+                            </button>
+                            {result && !result.error && (
+                                <div style={{
+                                    marginTop: '20px',
+                                    padding: '16px',
+                                    backgroundColor: '#333',
+                                    borderRadius: '8px'
+                                }}>
+                                    <h3 style={{ marginBottom: '12px', color: 'white' }}>Investment Results</h3>
+                                    <p style={{ color: 'white' }}>Annual Return: €{result.annualReturn}</p>
+                                    <p style={{ color: 'white' }}>Monthly Return: €{result.monthlyReturn}</p>
+                                    <p style={{ color: 'white' }}>Total Value after 1 year: €{result.totalValue}</p>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <div>
+                            <div style={{ marginBottom: '20px' }}>
+                                <label style={{ display: 'block', marginBottom: '8px', color: 'white' }}>
+                                    Monthly Rent (€)
+                                </label>
+                                <input
+                                    type="number"
+                                    value={rentAmount}
+                                    onChange={(e) => setRentAmount(e.target.value)}
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        borderRadius: '8px',
+                                        backgroundColor: '#333',
+                                        border: '1px solid #444',
+                                        color: 'white'
+                                    }}
+                                    placeholder="Enter monthly rent"
+                                />
+                            </div>
+                            <button
+                                onClick={calculateRentSavings}
+                                style={{
+                                    width: '100%',
+                                    padding: '12px',
+                                    borderRadius: '8px',
+                                    backgroundColor: '#34C759',
+                                    border: 'none',
+                                    color: 'white',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Calculate Savings
+                            </button>
+                            {result && !result.error && (
+                                <div style={{
+                                    marginTop: '20px',
+                                    padding: '16px',
+                                    backgroundColor: '#333',
+                                    borderRadius: '8px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '12px'
+                                }}>
+                                    <h3 style={{ color: 'white' }}>Cost Comparison</h3>
+                                    <div style={{
+                                        padding: '12px',
+                                        backgroundColor: '#444',
+                                        borderRadius: '8px'
+                                    }}>
+                                        <p style={{ color: '#aaa', fontSize: '14px' }}>Traditional Rent (12 months)</p>
+                                        <p style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
+                                            €{result.traditionalYearly}/year
+                                        </p>
+                                    </div>
+                                    <div style={{
+                                        padding: '12px',
+                                        backgroundColor: '#1a472a',
+                                        borderRadius: '8px'
+                                    }}>
+                                        <p style={{ color: '#aaa', fontSize: '14px' }}>Jungle Rent (9 months)</p>
+                                        <p style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
+                                            €{result.jungleRentYearly}/year
+                                        </p>
+                                    </div>
+                                    <div style={{
+                                        padding: '12px',
+                                        backgroundColor: '#1a2847',
+                                        borderRadius: '8px'
+                                    }}>
+                                        <p style={{ color: '#aaa', fontSize: '14px' }}>Your Savings</p>
+                                        <p style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
+                                            €{result.yearlySavings}/year ({result.savingsPercentage}%)
+                                        </p>
+                                        <p style={{ color: '#aaa', fontSize: '14px', marginTop: '4px' }}>
+                                            Effective monthly rate: €{result.effectiveMonthlyRate}/month
+                                        </p>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                    
+                    {result && result.error && (
+                        <div style={{
+                            marginTop: '20px',
+                            padding: '16px',
+                            backgroundColor: '#cc0000',
+                            borderRadius: '8px',
+                            color: 'white'
+                        }}>
+                            {result.error}
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // Dashboard Component
+        const InvestorDashboard = () => {
+            return (
+                <div style={{ color: 'white' }}>
+                    <h3>Dashboard Coming Soon</h3>
+                    <p>We are working hard to bring you the best dashboard experience. Stay tuned!</p>
+                </div>
+            );
+        };
+
+        // Render Components
+        ReactDOM.render(<Calculator />, document.getElementById('calculator-root'));
+        ReactDOM.render(<InvestorDashboard />, document.getElementById('dashboard-root'));
+    </script>
+
+    <!-- Chart.js Initialization -->
+    <script>
         // Initialize the chart
         const ctx = document.getElementById('equity-growth-chart').getContext('2d');
         new Chart(ctx, {
@@ -388,7 +733,7 @@
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            callback: function(value, index, values) {
+                            callback: function(value) {
                                 return '€' + value.toLocaleString();
                             }
                         }
@@ -397,92 +742,28 @@
             }
         });
 
-        // Handle form submission
+        // Form Submission Handlers
         document.getElementById('feedback-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          alert('Thank you for your feedback! We will get back to you soon.');
-          this.submit(); // Actually submits the form
-          <a href="tel:+3933190353037" class="btn" style="margin-top: 20px;">Contact +3933190353037 Lorenzo Oni-Joseph</a>
-         });    
-    </script>
-    <section id="pioneer-adopter">
-        <div class="container">
-            <div class="section-content">
-                <h2>Become a Pioneer Adopter</h2>
-                <p>Join the Jungle Rent Pioneer Adopter program and become an ambassador for our revolutionary student housing solution. As a Pioneer Adopter, you’ll have the chance to win up to 4 months of rent-free living while helping us spread the word about Jungle Rent.</p>
-    
-                <div class="features">
-                    <div class="feature">
-                        <h3>Exclusive Benefits</h3>
-                        <p>Win up to 4 months rent-free, gain access to exclusive events, and be featured on our platform.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Ambassador Responsibilities</h3>
-                        <p>Promote Jungle Rent on your campus, engage with other students, and help us grow our community.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>How to Apply</h3>
-                        <p>Fill out the form below to register your interest. We'll contact you with more details about the selection process.</p>
-                    </div>
-                </div>
-    
-                <!-- Registration Form -->
-                <form id="pioneer-registration-form" action="https://formspree.io/f/xeojbzow" method="POST">
-                    <input type="text" name="name" placeholder="First Name" required>
-                    <input type="text" name="surname" placeholder="Last Name" required>
-                    <input type="email" name="email" placeholder="University Email" required>
-                    <input type="text" name="university" placeholder="University Name" required>
-                    <input type="number" name="age" placeholder="Age" required>
-                    <textarea name="motivation" placeholder="Why do you want to become a Jungle Rent Pioneer (JRP)?" required></textarea>
-                    <button type="submit" class="btn">Apply Now</button>
-                </form>
-            </div>
-        </div>
-    </section>
-  </script>
-  <script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+            alert('Thank you for your feedback! We will get back to you soon.');
+            this.submit();
+        });
+
+        document.getElementById('pioneer-registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for applying to the Pioneer Program! We will contact you soon.');
+            this.submit();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
-    });
-
-    // Add the chart initialization code here
-    new Chart(document.getElementById('equity-growth-chart').getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: ['2024', '2025', '2026', '2027', '2028', '2029'],
-            datasets: [{
-                label: 'Jungle Rent Revenue',
-                data: [7401.68, 14737.97, 19529.38, 24206.37, 30361.42, 35152.83],
-                borderColor: '#34C759',
-                tension: 0.1
-            },
-            {
-                label: 'SFP Revenue',
-                data: [42598.32, 135262.03, 180470.62, 225793.63, 269638.58, 314847.17],
-                borderColor: '#5AC8FA',
-                tension: 0.1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value, index, values) {
-                            return '€' + value.toLocaleString();
-                        }
-                    }
-                }
-            }
-        }
-    });
-  </script>
+    </script>
 </body>
 </html>
