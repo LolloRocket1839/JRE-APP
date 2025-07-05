@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affitto Studenti Torino - Risparmia 25% | Jungle Rent</title>
-    <meta name="description" content="Jungle Rent - La rivoluzione degli affitti per studenti a Torino. Risparmia il 25% sull'affitto annuale vicino al Politecnico e Università di Torino.">
+    <title>Affitti Studenti Torino - Paghi 25% in Meno | Jungle Rent</title>
+    <meta name="description" content="Jungle Rent - Il modo rivoluzionario di affittare per studenti a Torino. Paghi il 25% in meno sull'affitto annuale + possibilità di vincere 1 mese gratis. Vicino al Politecnico e Università di Torino.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
 
@@ -455,6 +455,65 @@
             color: var(--text-color);
         }
 
+        .privacy-checkbox {
+            margin: 20px 0;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.08);
+            position: relative;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-container:hover .checkmark {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .checkbox-container input[type="checkbox"]:checked + .checkmark {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+
+        .checkbox-container input[type="checkbox"]:checked + .checkmark::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 10px;
+            border: solid var(--bg-black);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-text {
+            color: var(--text-secondary);
+            flex: 1;
+        }
+
+        .checkbox-container input[type="checkbox"]:focus + .checkmark {
+            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.2);
+        }
+
         .optional-label {
             font-size: 12px;
             color: var(--text-secondary);
@@ -627,7 +686,7 @@
             text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
+            @media (max-width: 768px) {
             h1 {
                 font-size: 48px;
             }
@@ -670,6 +729,22 @@
             .uni-logos {
                 grid-template-columns: 1fr 1fr;
                 gap: 15px;
+            }
+
+            .checkbox-container {
+                font-size: 13px;
+            }
+
+            .checkmark {
+                width: 18px;
+                height: 18px;
+            }
+
+            .checkbox-container input[type="checkbox"]:checked + .checkmark::after {
+                left: 5px;
+                top: 1px;
+                width: 5px;
+                height: 9px;
             }
         }
 
@@ -728,20 +803,20 @@
                 </div>
                 <h1>
                     <span lang="en">Pay 25% Less<br>for Your Student Home</span>
-                    <span lang="it">Paga il 25% in Meno<br>per la Tua Casa Universitaria</span>
+                    <span lang="it">Paghi il 25% in Meno<br>per la Tua Casa da Studente</span>
                 </h1>
                 <p class="hero-subtitle">
                     <span lang="en">
                         The revolutionary way to rent near your university. <span class="highlight">Coming soon.</span>
                     </span>
                     <span lang="it">
-                        Il modo rivoluzionario di affittare vicino all'università. <span class="highlight">Presto disponibile.</span>
+                        Il modo rivoluzionario di affittare vicino alla tua università. <span class="highlight">In arrivo presto.</span>
                     </span>
                 </p>
 
                 <!-- Social Proof Section -->
                 <div class="social-proof">
-                    <div class="waitlist-counter" data-target="15" data-delay="0">0</div>
+                    <div class="waitlist-counter" data-target="18" data-delay="0">0</div>
                     <div class="waitlist-text">
                         <span lang="en">students already on the waitlist</span>
                         <span lang="it">studenti già in lista d'attesa</span>
@@ -749,21 +824,14 @@
                     
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-number" data-target="73" data-delay="200">0</div>
-                            <div class="stat-label">
-                                <span lang="en">of students want to save 25%</span>
-                                <span lang="it">degli studenti vuole risparmiare il 25%</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" data-target="15" data-delay="400">0</div>
+                            <div class="stat-number" data-target="15" data-delay="200">0</div>
                             <div class="stat-label">
                                 <span lang="en">apartments at launch</span>
                                 <span lang="it">appartamenti al lancio</span>
                             </div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-number" data-target="50" data-delay="600">0</div>
+                            <div class="stat-number" data-target="50" data-delay="400">0</div>
                             <div class="stat-label">
                                 <span lang="en">available beds</span>
                                 <span lang="it">posti letto disponibili</span>
@@ -782,7 +850,7 @@
                             <span class="uni-name">ESCP Business School</span>
                             <span class="uni-name">IED Torino</span>
                             <span class="uni-name">IAAD</span>
-                            <span class="uni-name">IUS Torino</span>
+                            <span class="uni-name">IUSTO</span>
                         </div>
                     </div>
                 </div>
@@ -790,8 +858,8 @@
                 <!-- Urgency Banner -->
                 <div class="urgency-banner">
                     <div class="urgency-text">
-                        <span lang="en">🎁 First 10 students get 1 month FREE! Only 50 beds available.</span>
-                        <span lang="it">🎁 I primi 10 studenti ricevono 1 mese GRATIS! Solo 50 posti letto disponibili.</span>
+                        <span lang="en">🎁 Chance to WIN 1 month FREE rent for 10 students! Apply by September 30th, 2025</span>
+                        <span lang="it">🎁 Possibilità di VINCERE 1 mese di affitto GRATIS per 10 studenti! Candidati entro il 30 settembre 2025</span>
                     </div>
                     <div class="countdown" id="countdown">
                         <div class="countdown-item">
@@ -856,96 +924,68 @@
 
                     <!-- Lead Magnet -->
                     <div class="lead-magnet" id="lead-magnet">
-                        <p class="lead-magnet-text">
-                            <span lang="en" id="student-magnet">📚 Get FREE: "10 Tricks to Rent in Turin" guide</span>
-                            <span lang="it" id="student-magnet-it">📚 Ricevi GRATIS: Guida "10 Trucchi per Affittare a Torino"</span>
-                            <span lang="en" id="investor-magnet" style="display:none;">📊 Get FREE: "Student Housing Market Report 2024"</span>
-                            <span lang="it" id="investor-magnet-it" style="display:none;">📊 Ricevi GRATIS: "Report Mercato Immobiliare Studentesco 2024"</span>
+                        <p class="lead-magnet-text" id="magnet-text">
+                            <span lang="en">📚 Get FREE: "10 Tricks to Rent in Turin" guide</span>
+                            <span lang="it">📚 Ricevi GRATIS: Guida "10 Trucchi per Affittare a Torino"</span>
                         </p>
                     </div>
 
                     <form id="waitlist-form" action="https://formspree.io/f/xeojbzow" method="POST">
-                        <input type="text" name="name" id="name" placeholder="Your Name" data-placeholder-en="Your Name" data-placeholder-it="Il tuo Nome" required>
-                        <input type="email" name="email" id="email" placeholder="Your Email" data-placeholder-en="Your Email" data-placeholder-it="La tua Email" required>
+                        <input type="text" name="name" id="name" required>
+                        <input type="email" name="email" id="email" required>
                         
-                        <!-- Additional strategic fields -->
-                        <select name="university" id="university" data-placeholder-en="Select University (Optional)" data-placeholder-it="Seleziona Università (Opzionale)">
-                            <option value="">
-                                <span lang="en">Select University (Optional)</span>
-                                <span lang="it">Seleziona Università (Opzionale)</span>
-                            </option>
-                            <option value="polito">Politecnico di Torino</option>
-                            <option value="unito">Università di Torino</option>
-                            <option value="escp">ESCP Business School</option>
-                            <option value="ied">IED Torino</option>
-                            <option value="iaad">IAAD</option>
-                            <option value="iusto">IUS Torino</option>
-                            <option value="other">
-                                <span lang="en">Other</span>
-                                <span lang="it">Altro</span>
-                            </option>
+                        <!-- Additional strategic fields for students -->
+                        <div id="student-fields">
+                            <select name="university" id="university">
+                                <option value="" id="university-placeholder"></option>
+                                <option value="polito">Politecnico di Torino</option>
+                                <option value="unito">Università di Torino</option>
+                                <option value="escp">ESCP Business School</option>
+                                <option value="ied">IED Torino</option>
+                                <option value="iaad">IAAD</option>
+                                <option value="iusto">IUSTO</option>
+                                <option value="other" id="other-option"></option>
+                            </select>
+
+                            <select name="budget" id="budget">
+                                <option value="" id="budget-placeholder"></option>
+                                <option value="300-400">€300 - €400</option>
+                                <option value="400-500">€400 - €500</option>
+                                <option value="over-500">> €500</option>
+                            </select>
+
+                            <select name="move_date" id="move_date">
+                                <option value="" id="move-date-placeholder"></option>
+                                <option value="september-2025" id="september-option"></option>
+                                <option value="january-2026" id="january-option"></option>
+                                <option value="other" id="other-move-option"></option>
+                            </select>
+                        </div>
+
+                        <select name="referral_source" id="referral_source">
+                            <option value="" id="referral-placeholder"></option>
+                            <option value="friend" id="friend-option"></option>
+                            <option value="university" id="university-option"></option>
+                            <option value="social" id="social-option"></option>
+                            <option value="search" id="search-option"></option>
+                            <option value="ai-search" id="ai-search-option"></option>
+                            <option value="other" id="other-referral-option"></option>
                         </select>
 
-                        <select name="budget" id="budget" data-placeholder-en="Monthly Budget (Optional)" data-placeholder-it="Budget Mensile (Opzionale)">
-                            <option value="">
-                                <span lang="en">Monthly Budget (Optional)</span>
-                                <span lang="it">Budget Mensile (Opzionale)</span>
-                            </option>
-                            <option value="under-300">< €300</option>
-                            <option value="300-400">€300 - €400</option>
-                            <option value="400-500">€400 - €500</option>
-                            <option value="over-500">> €500</option>
-                        </select>
-
-                        <select name="move_date" id="move_date" data-placeholder-en="When do you need housing? (Optional)" data-placeholder-it="Quando ti serve l'alloggio? (Opzionale)">
-                            <option value="">
-                                <span lang="en">When do you need housing? (Optional)</span>
-                                <span lang="it">Quando ti serve l'alloggio? (Opzionale)</span>
-                            </option>
-                            <option value="september-2024">
-                                <span lang="en">September 2024</span>
-                                <span lang="it">Settembre 2024</span>
-                            </option>
-                            <option value="january-2025">
-                                <span lang="en">January 2025</span>
-                                <span lang="it">Gennaio 2025</span>
-                            </option>
-                            <option value="other">
-                                <span lang="en">Other</span>
-                                <span lang="it">Altro</span>
-                            </option>
-                        </select>
-
-                        <select name="referral_source" id="referral_source" data-placeholder-en="How did you hear about us? (Optional)" data-placeholder-it="Come ci hai conosciuto? (Opzionale)">
-                            <option value="">
-                                <span lang="en">How did you hear about us? (Optional)</span>
-                                <span lang="it">Come ci hai conosciuto? (Opzionale)</span>
-                            </option>
-                            <option value="friend">
-                                <span lang="en">Friend</span>
-                                <span lang="it">Amico</span>
-                            </option>
-                            <option value="university">
-                                <span lang="en">University</span>
-                                <span lang="it">Università</span>
-                            </option>
-                            <option value="social">
-                                <span lang="en">Social Media</span>
-                                <span lang="it">Social Media</span>
-                            </option>
-                            <option value="search">
-                                <span lang="en">Google Search</span>
-                                <span lang="it">Ricerca Google</span>
-                            </option>
-                            <option value="other">
-                                <span lang="en">Other</span>
-                                <span lang="it">Altro</span>
-                            </option>
-                        </select>
+                        <div class="privacy-checkbox">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="privacy-consent" name="privacy_consent" required>
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">
+                                    <span lang="en">I accept the data processing to receive information about Jungle Rent's offer</span>
+                                    <span lang="it">Accetto il trattamento dei dati per ricevere informazioni in merito all'offerta di Jungle Rent</span>
+                                </span>
+                            </label>
+                        </div>
 
                         <input type="hidden" name="user_type" id="user-type" value="student">
                         <input type="hidden" name="_subject" value="New Jungle Rent Lead">
-                        <button type="submit" class="btn">
+                        <button type="submit" class="btn" id="submit-btn">
                             <span lang="en">Get Early Access</span>
                             <span lang="it">Ottieni Accesso Anticipato</span>
                         </button>
@@ -1001,8 +1041,8 @@
                         <span class="faq-arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <span lang="en">We're planning to launch in September 2024 with our first 15 apartments in Turin. Early subscribers will get priority access!</span>
-                        <span lang="it">Prevediamo di lanciare a settembre 2024 con i nostri primi 15 appartamenti a Torino. I primi iscritti avranno accesso prioritario!</span>
+                        <span lang="en">We're planning to launch for investors in May 2026 and for students in September 2026 with our first 15 apartments in Turin. Early subscribers will get priority access!</span>
+                        <span lang="it">Prevediamo di lanciare per gli investitori a maggio 2026 e per gli studenti a settembre 2026 con i nostri primi 15 appartamenti a Torino. I primi iscritti avranno accesso prioritario!</span>
                     </div>
                 </div>
 
@@ -1060,9 +1100,108 @@
     </footer>
 
     <script>
+        // Form translations
+        const translations = {
+            en: {
+                name: "Your Name",
+                email: "Your Email", 
+                university: "Select University (Optional)",
+                budget: "Monthly Budget (Optional)",
+                moveDate: "When do you need housing? (Optional)",
+                referral: "How did you hear about us? (Optional)",
+                other: "Other",
+                friend: "Friend",
+                universityRef: "University",
+                social: "Social Media",
+                search: "Google Search",
+                aiSearch: "AI Search",
+                september: "September 2025",
+                january: "January 2026",
+                formTitle: "Be the First to Know",
+                formSubtitle: "Join our exclusive waitlist and get early access when we launch.",
+                submitBtn: "Get Early Access",
+                formTitleInvestor: "Invest from Just €100",
+                formSubtitleInvestor: "Discover a new way to invest in real estate. Get exclusive early access.",
+                submitBtnInvestor: "Join Investor Waitlist",
+                magnetStudent: "📚 Get FREE: \"10 Tricks to Rent in Turin\" guide",
+                magnetInvestor: "📊 Get FREE: \"Student Housing Market Report 2024\"",
+                sending: "Sending..."
+            },
+            it: {
+                name: "Il tuo Nome",
+                email: "La tua Email",
+                university: "Seleziona Università (Opzionale)",
+                budget: "Budget Mensile (Opzionale)",
+                moveDate: "Quando ti serve l'alloggio? (Opzionale)",
+                referral: "Come ci hai conosciuto? (Opzionale)",
+                other: "Altro",
+                friend: "Amico",
+                universityRef: "Università",
+                social: "Social Media",
+                search: "Ricerca Google",
+                aiSearch: "Ricerca IA",
+                september: "Settembre 2025",
+                january: "Gennaio 2026",
+                formTitle: "Sii il Primo a Sapere",
+                formSubtitle: "Unisciti alla nostra lista d'attesa esclusiva e ottieni l'accesso anticipato al lancio.",
+                submitBtn: "Ottieni Accesso Anticipato",
+                formTitleInvestor: "Investi da Soli €100",
+                formSubtitleInvestor: "Scopri un nuovo modo di investire nel mercato immobiliare. Ottieni accesso esclusivo anticipato.",
+                submitBtnInvestor: "Unisciti alla Lista Investitori",
+                magnetStudent: "📚 Ricevi GRATIS: Guida \"10 Trucchi per Affittare a Torino\"",
+                magnetInvestor: "📊 Ricevi GRATIS: \"Report Mercato Immobiliare Studentesco 2024\"",
+                sending: "Invio..."
+            }
+        };
+
+        let currentLang = 'en';
+        let currentTab = 'student';
+
+        // Update form text based on language and tab
+        function updateFormTranslations() {
+            const t = translations[currentLang];
+            
+            // Update placeholders
+            document.getElementById('name').placeholder = t.name;
+            document.getElementById('email').placeholder = t.email;
+            document.getElementById('university-placeholder').textContent = t.university;
+            document.getElementById('budget-placeholder').textContent = t.budget;
+            document.getElementById('move-date-placeholder').textContent = t.moveDate;
+            document.getElementById('referral-placeholder').textContent = t.referral;
+            
+            // Update option texts
+            document.getElementById('other-option').textContent = t.other;
+            document.getElementById('friend-option').textContent = t.friend;
+            document.getElementById('university-option').textContent = t.universityRef;
+            document.getElementById('social-option').textContent = t.social;
+            document.getElementById('search-option').textContent = t.search;
+            document.getElementById('ai-search-option').textContent = t.aiSearch;
+            document.getElementById('september-option').textContent = t.september;
+            document.getElementById('january-option').textContent = t.january;
+            document.getElementById('other-move-option').textContent = t.other;
+            document.getElementById('other-referral-option').textContent = t.other;
+            
+            // Update form title and button based on tab
+            if (currentTab === 'investor') {
+                document.querySelector('.form-title span[lang="' + currentLang + '"]').textContent = t.formTitleInvestor;
+                document.querySelector('.form-subtitle span[lang="' + currentLang + '"]').textContent = t.formSubtitleInvestor;
+                document.querySelector('#submit-btn span[lang="' + currentLang + '"]').textContent = t.submitBtnInvestor;
+                document.getElementById('magnet-text').innerHTML = 
+                    `<span lang="en" style="display: ${currentLang === 'en' ? 'inline' : 'none'}">${translations.en.magnetInvestor}</span>
+                     <span lang="it" style="display: ${currentLang === 'it' ? 'inline' : 'none'}">${translations.it.magnetInvestor}</span>`;
+            } else {
+                document.querySelector('.form-title span[lang="' + currentLang + '"]').textContent = t.formTitle;
+                document.querySelector('.form-subtitle span[lang="' + currentLang + '"]').textContent = t.formSubtitle;
+                document.querySelector('#submit-btn span[lang="' + currentLang + '"]').textContent = t.submitBtn;
+                document.getElementById('magnet-text').innerHTML = 
+                    `<span lang="en" style="display: ${currentLang === 'en' ? 'inline' : 'none'}">${translations.en.magnetStudent}</span>
+                     <span lang="it" style="display: ${currentLang === 'it' ? 'inline' : 'none'}">${translations.it.magnetStudent}</span>`;
+            }
+        }
+
         // Countdown Timer
         function updateCountdown() {
-            const launchDate = new Date('2024-09-01T00:00:00').getTime();
+            const launchDate = new Date('2025-09-30T23:59:59').getTime();
             const now = new Date().getTime();
             const distance = launchDate - now;
 
@@ -1148,6 +1287,8 @@
 
         // Language switching functionality
         function switchLanguage(lang) {
+            currentLang = lang;
+            
             // Update body class
             if (lang === 'it') {
                 document.body.classList.add('italian');
@@ -1161,9 +1302,8 @@
             });
             event.target.classList.add('active');
             
-            // Update form placeholders
-            document.getElementById('name').placeholder = document.getElementById('name').getAttribute(`data-placeholder-${lang}`);
-            document.getElementById('email').placeholder = document.getElementById('email').getAttribute(`data-placeholder-${lang}`);
+            // Update form translations
+            updateFormTranslations();
             
             // Store language preference
             localStorage.setItem('preferredLanguage', lang);
@@ -1172,16 +1312,20 @@
         // Load preferred language on page load
         window.addEventListener('DOMContentLoaded', function() {
             const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+            currentLang = preferredLang;
+            
             if (preferredLang === 'it') {
                 document.body.classList.add('italian');
                 document.querySelector('.lang-btn[onclick="switchLanguage(\'it\')"]').classList.add('active');
                 document.querySelector('.lang-btn[onclick="switchLanguage(\'en\')"]').classList.remove('active');
-                document.getElementById('name').placeholder = document.getElementById('name').getAttribute('data-placeholder-it');
-                document.getElementById('email').placeholder = document.getElementById('email').getAttribute('data-placeholder-it');
             }
+            
+            updateFormTranslations();
         });
 
         function switchTab(type) {
+            currentTab = type;
+            
             // Update active tab
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -1191,58 +1335,18 @@
             // Update hidden field
             document.getElementById('user-type').value = type;
             
-            // Get current language
-            const isItalian = document.body.classList.contains('italian');
-            
-            // Update lead magnet
+            // Show/hide student specific fields
+            const studentFields = document.getElementById('student-fields');
             if (type === 'investor') {
-                document.getElementById('student-magnet').style.display = 'none';
-                document.getElementById('student-magnet-it').style.display = 'none';
-                document.getElementById('investor-magnet').style.display = 'block';
-                document.getElementById('investor-magnet-it').style.display = 'block';
-            } else {
-                document.getElementById('student-magnet').style.display = 'block';
-                document.getElementById('student-magnet-it').style.display = 'block';
-                document.getElementById('investor-magnet').style.display = 'none';
-                document.getElementById('investor-magnet-it').style.display = 'none';
-            }
-            
-            // Update form content based on tab and language
-            if (type === 'investor') {
-                if (isItalian) {
-                    document.querySelector('.form-title [lang="it"]').textContent = 'Investi da Soli €100';
-                    document.querySelector('.form-subtitle [lang="it"]').textContent = 'Scopri un nuovo modo di investire nel mercato immobiliare. Ottieni accesso esclusivo anticipato.';
-                    document.querySelector('.btn [lang="it"]').textContent = 'Unisciti alla Lista Investitori';
-                } else {
-                    document.querySelector('.form-title [lang="en"]').textContent = 'Invest from Just €100';
-                    document.querySelector('.form-subtitle [lang="en"]').textContent = 'Discover a new way to invest in real estate. Get exclusive early access.';
-                    document.querySelector('.btn [lang="en"]').textContent = 'Join Investor Waitlist';
-                }
-                // Update form subject
+                studentFields.style.display = 'none';
                 document.querySelector('input[name="_subject"]').value = 'New Jungle Rent Investor Lead';
-                
-                // Hide student-specific fields
-                document.getElementById('university').style.display = 'none';
-                document.getElementById('budget').style.display = 'none';
-                document.getElementById('move_date').style.display = 'none';
             } else {
-                if (isItalian) {
-                    document.querySelector('.form-title [lang="it"]').textContent = 'Sii il Primo a Sapere';
-                    document.querySelector('.form-subtitle [lang="it"]').textContent = 'Unisciti alla nostra lista d\'attesa esclusiva e ottieni l\'accesso anticipato al lancio.';
-                    document.querySelector('.btn [lang="it"]').textContent = 'Ottieni Accesso Anticipato';
-                } else {
-                    document.querySelector('.form-title [lang="en"]').textContent = 'Be the First to Know';
-                    document.querySelector('.form-subtitle [lang="en"]').textContent = 'Join our exclusive waitlist and get early access when we launch.';
-                    document.querySelector('.btn [lang="en"]').textContent = 'Get Early Access';
-                }
-                // Update form subject
+                studentFields.style.display = 'block';
                 document.querySelector('input[name="_subject"]').value = 'New Jungle Rent Student Lead';
-                
-                // Show student-specific fields
-                document.getElementById('university').style.display = 'block';
-                document.getElementById('budget').style.display = 'block';
-                document.getElementById('move_date').style.display = 'block';
             }
+            
+            // Update form translations
+            updateFormTranslations();
         }
 
         // Handle form submission
@@ -1252,7 +1356,8 @@
             // Show loading state on button
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span lang="en">Sending...</span><span lang="it">Invio...</span>';
+            const t = translations[currentLang];
+            submitBtn.innerHTML = t.sending;
             submitBtn.disabled = true;
             
             // Submit the form using Formspree
@@ -1282,6 +1387,8 @@
                         document.getElementById('success-message').style.display = 'none';
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
+                        // Uncheck the privacy checkbox
+                        document.getElementById('privacy-consent').checked = false;
                     }, 5000);
                 } else {
                     // Handle error
