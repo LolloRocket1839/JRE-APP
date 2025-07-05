@@ -397,9 +397,9 @@
         .tab-btn {
             flex: 1;
             padding: 12px 20px;
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-secondary);
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-color);
             border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
@@ -407,32 +407,52 @@
             transition: all 0.3s ease;
         }
 
+        .tab-btn:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
         .tab-btn.active {
             background-color: var(--primary-green);
             color: var(--bg-black);
             border-color: var(--primary-green);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(52, 199, 89, 0.3);
         }
 
         input[type="email"], input[type="text"], select {
             width: 100%;
             padding: 15px 20px;
             margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(255, 255, 255, 0.08);
             color: var(--text-color);
             font-size: 16px;
             transition: all 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
 
         input[type="email"]:focus, input[type="text"]:focus, select:focus {
             outline: none;
             border-color: var(--primary-green);
-            background-color: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.2);
         }
 
         select {
             cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FFFFFF' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            padding-right: 45px;
+        }
+
+        select option {
+            background-color: var(--bg-dark);
+            color: var(--text-color);
         }
 
         .optional-label {
@@ -721,7 +741,7 @@
 
                 <!-- Social Proof Section -->
                 <div class="social-proof">
-                    <div class="waitlist-counter" data-target="237" data-delay="0">0</div>
+                    <div class="waitlist-counter" data-target="15" data-delay="0">0</div>
                     <div class="waitlist-text">
                         <span lang="en">students already on the waitlist</span>
                         <span lang="it">studenti già in lista d'attesa</span>
