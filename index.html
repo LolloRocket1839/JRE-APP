@@ -1,22 +1,24 @@
 <!DOCTYPE html>
+<!-- Jungle Rent Landing Page v2.0 - Updated with 2i3T support in 4 positions -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affitti Studenti Torino - Paghi 25% in Meno | Jungle Rent</title>
-    <meta name="description" content="Jungle Rent - Il modo rivoluzionario di affittare per studenti a Torino. Paghi il 25% in meno sull'affitto annuale + possibilità di vincere 1 mese gratis. Vicino al Politecnico e Università di Torino.">
+    <title>Jungle Rent - Risparmia il 25% sull'Affitto | Studenti Torino</title>
+    <meta name="description" content="Jungle Rent - Il modo rivoluzionario per affittare casa a Torino. Risparmia il 25% sull'affitto annuale + possibilità di vincere 1 mese gratis. Vicino al Politecnico e Università di Torino.">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
 
         :root {
             --primary-green: #34C759;
-            --dark-green: #30B94D;
+            --dark-green: #2AA847;
             --light-green: #66D78E;
             --bg-black: #000000;
-            --bg-dark: #1C1C1E;
+            --bg-dark: #0A0A0B;
             --text-color: #FFFFFF;
             --text-secondary: #8E8E93;
             --warning-yellow: #FFD60A;
+            --error-red: #FF3B30;
         }
 
         * {
@@ -33,10 +35,31 @@
             overflow-x: hidden;
         }
 
+        /* Animated gradient background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(52, 199, 89, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(52, 199, 89, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(52, 199, 89, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            animation: gradientMove 20s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.1); }
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
         }
 
         header {
@@ -45,20 +68,21 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--primary-green);
             display: flex;
@@ -66,25 +90,70 @@
             gap: 10px;
             letter-spacing: -0.5px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .logo:hover {
             transform: translateY(-2px);
+            filter: brightness(1.2);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background-color: rgba(52, 199, 89, 0.1);
+            border: 1px solid rgba(52, 199, 89, 0.2);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            background-color: rgba(52, 199, 89, 0.15);
+            border-color: var(--primary-green);
+            transform: translateY(-1px);
+        }
+
+        .trust-badge::before {
+            content: "✓";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            background-color: var(--primary-green);
+            color: var(--bg-black);
+            border-radius: 50%;
+            font-size: 10px;
         }
 
         .language-switcher {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 4px;
+            border-radius: 10px;
         }
 
         .lang-btn {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: none;
             color: var(--text-secondary);
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
@@ -93,14 +162,13 @@
         }
 
         .lang-btn:hover {
-            border-color: rgba(255, 255, 255, 0.4);
             color: var(--text-color);
         }
 
         .lang-btn.active {
             background-color: var(--primary-green);
             color: var(--bg-black);
-            border-color: var(--primary-green);
+            font-weight: 600;
         }
 
         .hero {
@@ -108,14 +176,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(ellipse at center, rgba(52, 199, 89, 0.1) 0%, transparent 70%);
             position: relative;
-            padding: 100px 0 50px 0;
+            padding: 120px 0 60px 0;
         }
 
         .hero-content {
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -123,18 +190,24 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: rgba(52, 199, 89, 0.2);
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.2), rgba(52, 199, 89, 0.1));
             color: var(--primary-green);
-            padding: 8px 20px;
-            border-radius: 20px;
+            padding: 10px 24px;
+            border-radius: 30px;
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 30px;
             border: 1px solid rgba(52, 199, 89, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-badge::before {
             content: "";
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
             width: 8px;
             height: 8px;
             background-color: var(--primary-green);
@@ -143,83 +216,107 @@
         }
 
         @keyframes pulse {
-            0% {
+            0%, 100% {
                 opacity: 1;
-                transform: scale(1);
+                transform: translateY(-50%) scale(1);
+                box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
             }
             50% {
-                opacity: 0.5;
-                transform: scale(1.2);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
+                opacity: 0.7;
+                transform: translateY(-50%) scale(1);
+                box-shadow: 0 0 0 10px rgba(52, 199, 89, 0);
             }
         }
 
         h1 {
-            font-size: 72px;
+            font-size: clamp(48px, 8vw, 80px);
             font-weight: 900;
             margin-bottom: 30px;
-            line-height: 1.1;
-            background: linear-gradient(135deg, var(--text-color) 0%, var(--primary-green) 100%);
+            line-height: 1.05;
+            background: linear-gradient(135deg, var(--text-color) 30%, var(--primary-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             background-size: 200% 200%;
-            animation: gradientShift 5s ease infinite;
+            animation: gradientShift 8s ease infinite;
+            position: relative;
         }
 
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .hero-subtitle {
-            font-size: 24px;
-            font-weight: 300;
+            font-size: clamp(18px, 2.5vw, 24px);
+            font-weight: 400;
             color: var(--text-secondary);
             margin-bottom: 20px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .highlight {
             color: var(--primary-green);
             font-weight: 600;
+            position: relative;
         }
 
-        /* Social Proof Section */
+        .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Enhanced Social Proof Section */
         .social-proof {
             margin: 40px 0;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-proof::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(52, 199, 89, 0.05) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .waitlist-counter {
-            font-size: 48px;
+            font-size: clamp(36px, 5vw, 56px);
             font-weight: 700;
             color: var(--primary-green);
             margin-bottom: 10px;
             transition: all 0.3s ease;
-        }
-
-        .waitlist-counter.counted {
-            transform: scale(1.05);
+            text-shadow: 0 0 30px rgba(52, 199, 89, 0.3);
         }
 
         .waitlist-text {
             font-size: 18px;
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .stats-grid {
@@ -227,111 +324,154 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-top: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .stat-card {
-            padding: 20px;
-            background-color: rgba(52, 199, 89, 0.1);
-            border-radius: 15px;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.15), rgba(52, 199, 89, 0.05));
+            border-radius: 16px;
             text-align: center;
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary-green);
+            border: 1px solid rgba(52, 199, 89, 0.2);
             transition: all 0.3s ease;
         }
 
-        @keyframes numberGlow {
-            0% { text-shadow: 0 0 10px rgba(52, 199, 89, 0); }
-            50% { text-shadow: 0 0 20px rgba(52, 199, 89, 0.5); }
-            100% { text-shadow: 0 0 10px rgba(52, 199, 89, 0); }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 199, 89, 0.2);
+            border-color: rgba(52, 199, 89, 0.4);
         }
 
-        .stat-number.counting, .waitlist-counter.counting {
-            animation: numberGlow 2s ease-out;
-        }
-
-        .stat-number.counted, .waitlist-counter.counted {
-            transform: scale(1.05);
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-green);
         }
 
         .stat-label {
             font-size: 14px;
             color: var(--text-secondary);
+            margin-top: 8px;
         }
 
         .universities {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .uni-label {
             font-size: 14px;
             color: var(--text-secondary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .uni-logos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
             justify-items: center;
             align-items: center;
-            margin-top: 20px;
         }
 
         .uni-name {
-            font-size: 15px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 500;
             color: var(--text-color);
-            opacity: 0.8;
-            text-align: center;
+            opacity: 0.7;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
 
-        /* Urgency Section */
+        .uni-name:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(52, 199, 89, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Urgency Section */
         .urgency-banner {
-            background-color: rgba(255, 214, 10, 0.1);
+            background: linear-gradient(135deg, rgba(255, 214, 10, 0.15), rgba(255, 214, 10, 0.05));
             border: 1px solid rgba(255, 214, 10, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px 0;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 35px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .urgency-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 214, 10, 0.1), transparent);
+            animation: sweep 3s linear infinite;
+        }
+
+        @keyframes sweep {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .urgency-text {
             color: var(--warning-yellow);
             font-weight: 600;
-            font-size: 18px;
+            font-size: clamp(16px, 2.5vw, 19px);
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
         }
 
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
+            gap: 25px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .countdown-item {
             text-align: center;
+            padding: 10px 15px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            min-width: 80px;
         }
 
         .countdown-number {
             font-size: 32px;
             font-weight: 700;
             color: var(--warning-yellow);
+            display: block;
+            line-height: 1;
         }
 
         .countdown-label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
         }
 
         .benefits {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
             margin-bottom: 40px;
             flex-wrap: wrap;
         }
@@ -339,124 +479,164 @@
         .benefit {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 18px;
+            gap: 12px;
+            font-size: 17px;
             position: relative;
-            padding-left: 28px;
+            padding-left: 32px;
+            color: var(--text-color);
         }
 
         .benefit::before {
             content: "";
             position: absolute;
             left: 0;
-            width: 20px;
-            height: 20px;
-            background-color: rgba(52, 199, 89, 0.2);
-            border: 2px solid var(--primary-green);
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
             border-radius: 50%;
         }
 
         .benefit::after {
             content: "✓";
             position: absolute;
-            left: 5px;
-            color: var(--primary-green);
+            left: 6px;
+            color: var(--bg-black);
             font-weight: 700;
             font-size: 14px;
         }
 
         .form-container {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            max-width: 600px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 45px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            max-width: 640px;
             margin: 0 auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .form-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-color), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .form-subtitle {
             font-size: 16px;
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            line-height: 1.5;
         }
 
         .tab-buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 35px;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 12px 20px;
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: var(--text-color);
-            border-radius: 10px;
+            padding: 14px 24px;
+            background-color: transparent;
+            border: none;
+            color: var(--text-secondary);
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .tab-btn:hover {
-            background-color: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.4);
+            color: var(--text-color);
         }
 
         .tab-btn.active {
             background-color: var(--primary-green);
             color: var(--bg-black);
-            border-color: var(--primary-green);
             font-weight: 600;
             box-shadow: 0 4px 15px rgba(52, 199, 89, 0.3);
         }
 
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: var(--error-red);
+        }
+
+        .error-message {
+            display: none;
+            color: var(--error-red);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
         input[type="email"], input[type="text"], select {
             width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.08);
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.05);
             color: var(--text-color);
             font-size: 16px;
+            font-family: inherit;
             transition: all 0.3s ease;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
         }
 
+        input[type="email"]:hover, input[type="text"]:hover, select:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
         input[type="email"]:focus, input[type="text"]:focus, select:focus {
             outline: none;
             border-color: var(--primary-green);
-            background-color: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.15);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
 
         select {
             cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FFFFFF' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238E8E93' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 20px center;
-            padding-right: 45px;
+            padding-right: 50px;
         }
 
         select option {
             background-color: var(--bg-dark);
             color: var(--text-color);
+            padding: 10px;
         }
 
         .privacy-checkbox {
-            margin: 20px 0;
+            margin: 25px 0;
         }
 
         .checkbox-container {
@@ -475,21 +655,22 @@
         .checkmark {
             width: 20px;
             height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-            background-color: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.05);
             position: relative;
             flex-shrink: 0;
             margin-top: 2px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .checkbox-container:hover .checkmark {
-            border-color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.08);
         }
 
         .checkbox-container input[type="checkbox"]:checked + .checkmark {
-            background-color: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
             border-color: var(--primary-green);
         }
 
@@ -498,7 +679,7 @@
             position: absolute;
             left: 6px;
             top: 2px;
-            width: 6px;
+            width: 5px;
             height: 10px;
             border: solid var(--bg-black);
             border-width: 0 2px 2px 0;
@@ -510,62 +691,129 @@
             flex: 1;
         }
 
-        .checkbox-container input[type="checkbox"]:focus + .checkmark {
-            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.2);
+        .checkbox-text a {
+            color: var(--primary-green);
+            text-decoration: none;
         }
 
-        .optional-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-left: 5px;
+        .checkbox-text a:hover {
+            text-decoration: underline;
         }
 
         .lead-magnet {
-            background-color: rgba(52, 199, 89, 0.1);
-            border: 1px solid rgba(52, 199, 89, 0.2);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.2), rgba(52, 199, 89, 0.1));
+            border: 1px solid rgba(52, 199, 89, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 25px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lead-magnet::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 199, 89, 0.2), transparent);
+            animation: sweep 4s linear infinite;
         }
 
         .lead-magnet-text {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--primary-green);
             font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
         .btn {
             width: 100%;
-            padding: 15px 30px;
-            background-color: var(--primary-green);
+            padding: 18px 30px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
             color: var(--bg-black);
             border: none;
-            border-radius: 10px;
-            font-size: 18px;
+            border-radius: 12px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn:hover {
-            background-color: var(--light-green);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(52, 199, 89, 0.3);
+            box-shadow: 0 10px 30px rgba(52, 199, 89, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
         }
 
         .privacy-note {
             font-size: 12px;
             color: var(--text-secondary);
-            margin-top: 15px;
+            margin-top: 20px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        /* FAQ Section */
+        .privacy-note::before {
+            content: "🔒";
+            font-size: 14px;
+        }
+
+        /* Enhanced FAQ Section */
         .faq-section {
-            padding: 80px 0;
-            background-color: var(--bg-dark);
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--bg-black) 0%, var(--bg-dark) 50%, var(--bg-black) 100%);
+            position: relative;
+        }
+
+        .faq-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         }
 
         .faq-container {
@@ -574,84 +822,176 @@
         }
 
         .faq-title {
-            font-size: 36px;
+            font-size: clamp(32px, 4vw, 40px);
             font-weight: 700;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--text-color), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .faq-item {
             margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
             overflow: hidden;
             transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.02);
         }
 
         .faq-item:hover {
-            border-color: var(--primary-green);
+            border-color: rgba(52, 199, 89, 0.3);
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-item.active {
+            border-color: rgba(52, 199, 89, 0.4);
+            box-shadow: 0 5px 20px rgba(52, 199, 89, 0.1);
         }
 
         .faq-question {
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.05);
+            padding: 24px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-green);
         }
 
         .faq-arrow {
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            color: var(--text-secondary);
         }
 
         .faq-item.active .faq-arrow {
             transform: rotate(180deg);
+            color: var(--primary-green);
         }
 
         .faq-answer {
-            padding: 0 20px;
+            padding: 0 24px;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         .faq-item.active .faq-answer {
-            padding: 20px;
-            max-height: 300px;
+            padding: 0 24px 24px;
+            max-height: 500px;
         }
 
         footer {
             background-color: var(--bg-black);
-            padding: 50px 0;
+            padding: 60px 0;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .contact-links {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .contact-links a {
+            color: var(--primary-green);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            border: 1px solid rgba(52, 199, 89, 0.3);
+            border-radius: 20px;
+            background-color: rgba(52, 199, 89, 0.05);
+        }
+
+        .contact-links a:hover {
+            background-color: rgba(52, 199, 89, 0.1);
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        .contact-links a::before {
+            content: "📞";
         }
 
         .success-message {
-            background-color: rgba(52, 199, 89, 0.2);
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.3), rgba(52, 199, 89, 0.1));
             border: 1px solid var(--primary-green);
             color: var(--primary-green);
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-top: 20px;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-top: 25px;
             display: none;
             text-align: center;
             font-weight: 500;
             position: relative;
-            padding-left: 45px;
+            animation: slideInUp 0.5s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .success-message::before {
-            content: "✓";
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            font-weight: 700;
+            content: "✨";
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
         }
 
         /* Hide Italian content by default */
@@ -667,59 +1007,124 @@
             display: block;
         }
 
-        .contact-links {
-            margin-top: 30px;
-            text-align: center;
+        /* Mobile Optimizations */
+        .supported-by {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        .contact-links a {
-            color: var(--primary-green);
+        .supported-by a {
+            color: var(--text-secondary);
             text-decoration: none;
-            margin: 0 8px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            display: inline-block;
+            transition: color 0.3s ease;
+            font-weight: 600;
         }
 
-        .contact-links a:hover {
-            color: var(--light-green);
-            text-decoration: underline;
+        .supported-by a:hover {
+            color: var(--primary-green);
         }
 
-            @media (max-width: 768px) {
+        .supported-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background-color: rgba(52, 199, 89, 0.08);
+            border: 1px solid rgba(52, 199, 89, 0.15);
+            border-radius: 15px;
+            font-size: 12px;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 0;
+            }
+            
+            .logo {
+                font-size: 22px;
+            }
+            
+            .trust-badge {
+                display: none;
+            }
+            
             h1 {
-                font-size: 48px;
+                font-size: 42px;
+                margin-bottom: 20px;
             }
             
             .hero-subtitle {
                 font-size: 18px;
+                margin-bottom: 15px;
             }
             
             .benefits {
                 flex-direction: column;
-                gap: 20px;
-                align-items: center;
+                gap: 15px;
+                align-items: flex-start;
+                max-width: 300px;
+                margin: 0 auto 30px;
+            }
+            
+            .benefit {
+                font-size: 15px;
             }
             
             .form-container {
                 padding: 30px 20px;
+                margin: 0 15px;
+            }
+            
+            .form-title {
+                font-size: 24px;
+            }
+            
+            .tab-btn {
+                font-size: 14px;
+                padding: 12px 16px;
+            }
+            
+            input[type="email"], input[type="text"], select {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .contact-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 25px;
             }
             
             .contact-links a {
-                display: block;
-                margin: 8px 0;
+                margin: 0;
             }
 
             .waitlist-counter {
-                font-size: 36px;
+                font-size: 42px;
             }
 
             .countdown {
                 gap: 10px;
             }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 8px 10px;
+            }
 
             .countdown-number {
-                font-size: 24px;
+                font-size: 28px;
             }
 
             .stats-grid {
@@ -727,36 +1132,79 @@
             }
 
             .uni-logos {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
 
-            .checkbox-container {
-                font-size: 13px;
+            .faq-title {
+                font-size: 32px;
+                margin-bottom: 40px;
             }
-
-            .checkmark {
-                width: 18px;
-                height: 18px;
+            
+            .faq-question {
+                font-size: 15px;
+                padding: 20px;
             }
-
-            .checkbox-container input[type="checkbox"]:checked + .checkmark::after {
-                left: 5px;
-                top: 1px;
-                width: 5px;
-                height: 9px;
+            
+            .social-proof {
+                padding: 25px 20px;
+            }
+            
+            .urgency-banner {
+                padding: 20px;
+            }
+            
+            .urgency-text {
+                font-size: 16px;
             }
         }
 
-        /* Floating animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .form-container {
+                padding: 25px 15px;
+            }
+            
+            .tab-buttons {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+            }
         }
 
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        /* Loading states */
+        .loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .loading::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         /* Fade in animation */
@@ -771,25 +1219,52 @@
             }
         }
 
-        .hero-badge, h1, .hero-subtitle, .benefits, .form-container {
-            animation: fadeInUp 0.8s ease-out;
+        .hero-badge, h1, .hero-subtitle, .social-proof, .urgency-banner, .benefits, .form-container {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             animation-fill-mode: backwards;
         }
 
         .hero-badge { animation-delay: 0.1s; }
         h1 { animation-delay: 0.2s; }
         .hero-subtitle { animation-delay: 0.3s; }
-        .benefits { animation-delay: 0.4s; }
-        .form-container { animation-delay: 0.5s; }
+        .social-proof { animation-delay: 0.4s; }
+        .urgency-banner { animation-delay: 0.5s; }
+        .benefits { animation-delay: 0.6s; }
+        .form-container { animation-delay: 0.7s; }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
             <div class="logo">Jungle Rent</div>
-            <div class="language-switcher">
-                <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
-                <button class="lang-btn" onclick="switchLanguage('it')">IT</button>
+            <div class="nav-right">
+                <div class="trust-badge">
+                    <span lang="en">Verified Partner</span>
+                    <span lang="it">Partner Verificato</span>
+                    <div class="supported-by">
+                        <span lang="en">Supported by</span>
+                        <span lang="it">Supportato da</span>
+                        <a href="https://2i3t.it" target="_blank" rel="noopener noreferrer" class="supported-badge">
+                            2i3T - UniTO Incubator
+                        </a>
+                    </div>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+                    <button class="lang-btn" onclick="switchLanguage('it')">IT</button>
+                </div>
             </div>
         </nav>
     </header>
@@ -797,52 +1272,68 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span lang="en">Launching Soon in Turin</span>
-                    <span lang="it">Presto a Torino</span>
+                <div class="hero-badge" style="margin-bottom: 15px;">
+                    <span lang="en" style="padding-left: 20px;">🚀 Launching Soon in Turin</span>
+                    <span lang="it" style="padding-left: 20px;">🚀 In Arrivo a Torino</span>
+                </div>
+                <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 25px;">
+                    <span style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">
+                        <span lang="en">Incubated by</span>
+                        <span lang="it">Incubato da</span>
+                    </span>
+                    <a href="https://2i3t.it" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; background: rgba(52, 199, 89, 0.1); border: 1px solid rgba(52, 199, 89, 0.2); border-radius: 12px; color: var(--primary-green); text-decoration: none; font-size: 13px; font-weight: 600; transition: all 0.3s ease;">
+                        2i3T • UniTO
+                    </a>
                 </div>
                 <h1>
-                    <span lang="en">Pay 25% Less<br>for Your Student Home</span>
-                    <span lang="it">Paghi il 25% in Meno<br>per la Tua Casa da Studente</span>
+                    <span lang="en">Save 25% on Your<br>Student Apartment</span>
+                    <span lang="it">Risparmia il 25%<br>sul Tuo Alloggio Studentesco</span>
                 </h1>
                 <p class="hero-subtitle">
                     <span lang="en">
-                        The revolutionary way to rent near your university. <span class="highlight">Coming soon.</span>
+                        The smart way to rent near Turin's universities. <span class="highlight">Join the revolution.</span>
                     </span>
                     <span lang="it">
-                        Il modo rivoluzionario di affittare vicino alla tua università. <span class="highlight">In arrivo presto.</span>
+                        Il modo intelligente per affittare vicino alle università di Torino. <span class="highlight">Unisciti alla rivoluzione.</span>
                     </span>
                 </p>
 
-                <!-- Social Proof Section -->
+                <!-- Enhanced Social Proof Section -->
                 <div class="social-proof">
-                    <div class="waitlist-counter" data-target="18" data-delay="0">0</div>
+                    <div class="waitlist-counter" data-target="15" data-delay="0">0</div>
                     <div class="waitlist-text">
-                        <span lang="en">students already on the waitlist</span>
-                        <span lang="it">studenti già in lista d'attesa</span>
+                        <span lang="en">forward-thinking students already joined</span>
+                        <span lang="it">studenti lungimiranti già iscritti</span>
                     </div>
                     
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-number" data-target="15" data-delay="200">0</div>
+                            <div class="stat-number" data-target="12" data-delay="200">0</div>
                             <div class="stat-label">
                                 <span lang="en">apartments at launch</span>
                                 <span lang="it">appartamenti al lancio</span>
                             </div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-number" data-target="50" data-delay="400">0</div>
+                            <div class="stat-number" data-target="36" data-delay="400">0</div>
                             <div class="stat-label">
-                                <span lang="en">available beds</span>
-                                <span lang="it">posti letto disponibili</span>
+                                <span lang="en">available rooms</span>
+                                <span lang="it">stanze disponibili</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="25" data-suffix="%" data-delay="600">0</div>
+                            <div class="stat-label">
+                                <span lang="en">guaranteed savings</span>
+                                <span lang="it">risparmio garantito</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="universities">
                         <div class="uni-label">
-                            <span lang="en">Coming soon near:</span>
-                            <span lang="it">Presto vicino a:</span>
+                            <span lang="en">Strategic Locations Near</span>
+                            <span lang="it">Posizioni Strategiche Vicino</span>
                         </div>
                         <div class="uni-logos">
                             <span class="uni-name">Politecnico di Torino</span>
@@ -855,11 +1346,11 @@
                     </div>
                 </div>
 
-                <!-- Urgency Banner -->
+                <!-- Enhanced Urgency Banner -->
                 <div class="urgency-banner">
                     <div class="urgency-text">
-                        <span lang="en">🎁 Chance to WIN 1 month FREE rent for 10 students! Apply by September 30th, 2025</span>
-                        <span lang="it">🎁 Possibilità di VINCERE 1 mese di affitto GRATIS per 10 studenti! Candidati entro il 30 settembre 2025</span>
+                        <span lang="en">🎁 Prize draw: 10 students will WIN 1 month FREE rent! Draw on September 30, 2025</span>
+                        <span lang="it">🎁 Estrazione a premi: 10 studenti VINCERANNO 1 mese di affitto GRATIS! Estrazione il 30 settembre 2025</span>
                     </div>
                     <div class="countdown" id="countdown">
                         <div class="countdown-item">
@@ -895,190 +1386,221 @@
                         <span lang="en">Near major universities</span>
                         <span lang="it">Vicino alle principali università</span>
                     </div>
-                    <div class="benefit">
-                        <span lang="en">Verified quality homes</span>
-                        <span lang="it">Case di qualità verificata</span>
-                    </div>
                 </div>
 
-                <div class="form-container floating">
+                <div class="form-container">
                     <h2 class="form-title">
-                        <span lang="en">Be the First to Know</span>
-                        <span lang="it">Sii il Primo a Sapere</span>
+                        <span lang="en">Secure Your Spot</span>
+                        <span lang="it">Prenota il Tuo Posto</span>
                     </h2>
                     <p class="form-subtitle">
-                        <span lang="en">Join our exclusive waitlist and get early access when we launch.</span>
-                        <span lang="it">Unisciti alla nostra lista d'attesa esclusiva e ottieni l'accesso anticipato al lancio.</span>
+                        <span lang="en">Join the exclusive waitlist. Limited spots available.</span>
+                        <span lang="it">Unisciti alla lista esclusiva. Posti limitati disponibili.</span>
                     </p>
                     
                     <div class="tab-buttons">
                         <button class="tab-btn active" onclick="switchTab('student')">
                             <span lang="en">I'm a Student</span>
-                            <span lang="it">Sono uno Studente</span>
+                            <span lang="it">Sono Studente</span>
                         </button>
                         <button class="tab-btn" onclick="switchTab('investor')">
                             <span lang="en">I'm an Investor</span>
-                            <span lang="it">Sono un Investitore</span>
+                            <span lang="it">Sono Investitore</span>
                         </button>
                     </div>
 
-                    <!-- Lead Magnet -->
                     <div class="lead-magnet" id="lead-magnet">
                         <p class="lead-magnet-text" id="magnet-text">
-                            <span lang="en">📚 Get FREE: "10 Tricks to Rent in Turin" guide</span>
-                            <span lang="it">📚 Ricevi GRATIS: Guida "10 Trucchi per Affittare a Torino"</span>
+                            <span lang="en">📚 Get the "Turin Student Housing Guide 2025"</span>
+                            <span lang="it">📚 Ricevi la "Guida Alloggi Studenti Torino 2025"</span>
                         </p>
                     </div>
 
                     <form id="waitlist-form" action="https://formspree.io/f/xeojbzow" method="POST">
-                        <input type="text" name="name" id="name" required>
-                        <input type="email" name="email" id="email" required>
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" required>
+                            <span class="error-message">
+                                <span lang="en">Please enter your name</span>
+                                <span lang="it">Inserisci il tuo nome</span>
+                            </span>
+                        </div>
                         
-                        <!-- Additional strategic fields for students -->
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" required>
+                            <span class="error-message">
+                                <span lang="en">Please enter a valid email</span>
+                                <span lang="it">Inserisci un'email valida</span>
+                            </span>
+                        </div>
+                        
+                        <!-- Enhanced Student Fields -->
                         <div id="student-fields">
-                            <select name="university" id="university">
-                                <option value="" id="university-placeholder"></option>
-                                <option value="polito">Politecnico di Torino</option>
-                                <option value="unito">Università di Torino</option>
-                                <option value="escp">ESCP Business School</option>
-                                <option value="ied">IED Torino</option>
-                                <option value="iaad">IAAD</option>
-                                <option value="iusto">IUSTO</option>
-                                <option value="other" id="other-option"></option>
-                            </select>
+                            <div class="form-group">
+                                <select name="university" id="university">
+                                    <option value="" id="university-placeholder"></option>
+                                    <option value="polito">Politecnico di Torino</option>
+                                    <option value="unito">Università di Torino</option>
+                                    <option value="escp">ESCP Business School</option>
+                                    <option value="ied">IED Torino</option>
+                                    <option value="iaad">IAAD</option>
+                                    <option value="iusto">IUSTO</option>
+                                    <option value="other" id="other-option"></option>
+                                </select>
+                            </div>
 
-                            <select name="budget" id="budget">
-                                <option value="" id="budget-placeholder"></option>
-                                <option value="300-400">€300 - €400</option>
-                                <option value="400-500">€400 - €500</option>
-                                <option value="over-500">> €500</option>
-                            </select>
+                            <div class="form-group">
+                                <select name="budget" id="budget">
+                                    <option value="" id="budget-placeholder"></option>
+                                    <option value="300-400">€300 - €400</option>
+                                    <option value="400-500">€400 - €500</option>
+                                    <option value="500-600">€500 - €600</option>
+                                    <option value="over-600">> €600</option>
+                                </select>
+                            </div>
 
-                            <select name="move_date" id="move_date">
-                                <option value="" id="move-date-placeholder"></option>
-                                <option value="september-2025" id="september-option"></option>
-                                <option value="january-2026" id="january-option"></option>
-                                <option value="other" id="other-move-option"></option>
-                            </select>
+                            <div class="form-group">
+                                <select name="move_date" id="move_date">
+                                    <option value="" id="move-date-placeholder"></option>
+                                    <option value="september-2025" id="september-option"></option>
+                                    <option value="january-2026" id="january-option"></option>
+                                    <option value="asap" id="asap-option"></option>
+                                    <option value="other" id="other-move-option"></option>
+                                </select>
+                            </div>
                         </div>
 
-                        <select name="referral_source" id="referral_source">
-                            <option value="" id="referral-placeholder"></option>
-                            <option value="friend" id="friend-option"></option>
-                            <option value="university" id="university-option"></option>
-                            <option value="social" id="social-option"></option>
-                            <option value="search" id="search-option"></option>
-                            <option value="ai-search" id="ai-search-option"></option>
-                            <option value="other" id="other-referral-option"></option>
-                        </select>
+                        <div class="form-group">
+                            <select name="referral_source" id="referral_source">
+                                <option value="" id="referral-placeholder"></option>
+                                <option value="friend" id="friend-option"></option>
+                                <option value="university" id="university-option"></option>
+                                <option value="instagram" id="instagram-option"></option>
+                                <option value="facebook" id="facebook-option"></option>
+                                <option value="google" id="google-option"></option>
+                                <option value="ai-assistant" id="ai-option"></option>
+                                <option value="other" id="other-referral-option"></option>
+                            </select>
+                        </div>
 
                         <div class="privacy-checkbox">
                             <label class="checkbox-container">
                                 <input type="checkbox" id="privacy-consent" name="privacy_consent" required>
                                 <span class="checkmark"></span>
                                 <span class="checkbox-text">
-                                    <span lang="en">I accept the data processing to receive information about Jungle Rent's offer</span>
-                                    <span lang="it">Accetto il trattamento dei dati per ricevere informazioni in merito all'offerta di Jungle Rent</span>
+                                    <span lang="en">I agree to receive updates about Jungle Rent's exclusive offers and understand I can unsubscribe anytime</span>
+                                    <span lang="it">Acconsento a ricevere aggiornamenti sulle offerte esclusive di Jungle Rent e posso cancellarmi in qualsiasi momento</span>
                                 </span>
                             </label>
                         </div>
 
                         <input type="hidden" name="user_type" id="user-type" value="student">
-                        <input type="hidden" name="_subject" value="New Jungle Rent Lead">
+                        <input type="hidden" name="_subject" value="New Jungle Rent Lead 🚀">
+                        <input type="hidden" name="timestamp" id="timestamp">
+                        
                         <button type="submit" class="btn" id="submit-btn">
-                            <span lang="en">Get Early Access</span>
-                            <span lang="it">Ottieni Accesso Anticipato</span>
+                            <span lang="en">Reserve My Spot →</span>
+                            <span lang="it">Prenota il Mio Posto →</span>
                         </button>
                     </form>
                     
                     <div class="success-message" id="success-message">
-                        <span lang="en">Awesome! You're on the list. We'll contact you soon!</span>
-                        <span lang="it">Fantastico! Sei nella lista. Ti contatteremo presto!</span>
+                        <span lang="en">Welcome aboard! Check your email for the housing guide. We'll contact you soon with priority access!</span>
+                        <span lang="it">Benvenuto a bordo! Controlla la tua email per la guida alloggi. Ti contatteremo presto con accesso prioritario!</span>
                     </div>
                     
                     <p class="privacy-note">
-                        <span lang="en">We respect your privacy. No spam, ever.</span>
-                        <span lang="it">Rispettiamo la tua privacy. Niente spam, mai.</span>
+                        <span lang="en">Your data is secure. Zero spam policy.</span>
+                        <span lang="it">I tuoi dati sono al sicuro. Zero spam garantito.</span>
                     </p>
 
                     <div class="contact-links">
-                        <span lang="en">Questions? Contact us:</span>
-                        <span lang="it">Domande? Contattaci:</span><br>
-                        <a href="tel:+393319053037">Lorenzo: +39 331 905 3037</a>
-                        <a href="tel:+393899135932">Andrea: +39 389 913 5932</a>
-                        <a href="tel:+393400734658">Andrew: +39 340 073 4658</a>
+                        <span lang="en" style="display: block; margin-bottom: 15px; color: var(--text-secondary);">Questions? Contact us:</span>
+                        <span lang="it" style="display: block; margin-bottom: 15px; color: var(--text-secondary);">Domande? Contattaci:</span>
+                        <a href="tel:+393319053037">📞 +39 331 905 3037</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
+    <!-- Enhanced FAQ Section -->
+    <section class="faq-section scroll-reveal">
         <div class="container">
             <div class="faq-container">
                 <h2 class="faq-title">
-                    <span lang="en">Frequently Asked Questions</span>
-                    <span lang="it">Domande Frequenti</span>
+                    <span lang="en">Everything You Need to Know</span>
+                    <span lang="it">Tutto Quello che Devi Sapere</span>
                 </h2>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span lang="en">How can I save 25% on rent?</span>
-                        <span lang="it">Come posso risparmiare il 25% sull'affitto?</span>
+                        <span lang="en">How exactly do I save 25% on rent?</span>
+                        <span lang="it">Come risparmio esattamente il 25% sull'affitto?</span>
                         <span class="faq-arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <span lang="en">Our innovative rental model allows you to pay less while getting the same quality housing near your university. Join the waitlist to discover how!</span>
-                        <span lang="it">Il nostro modello di affitto innovativo ti permette di pagare meno ottenendo la stessa qualità abitativa vicino alla tua università. Iscriviti alla lista d'attesa per scoprire come!</span>
+                        <span lang="en">Our innovative shared economy model eliminates traditional middleman costs and inefficiencies. By connecting students directly with property investors and using smart technology to manage properties, we pass the savings directly to you. It's like Airbnb meets student housing - but better!</span>
+                        <span lang="it">Il nostro modello innovativo di economia condivisa elimina i costi tradizionali degli intermediari e le inefficienze. Collegando gli studenti direttamente con gli investitori immobiliari e utilizzando tecnologia smart per gestire le proprietà, trasferiamo i risparmi direttamente a te. È come se Airbnb incontrasse gli alloggi studenteschi - ma meglio!</span>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span lang="en">When will Jungle Rent launch?</span>
-                        <span lang="it">Quando lancerà Jungle Rent?</span>
+                        <span lang="en">When will apartments be available?</span>
+                        <span lang="it">Quando saranno disponibili gli appartamenti?</span>
                         <span class="faq-arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <span lang="en">We're planning to launch for investors in May 2026 and for students in September 2026 with our first 15 apartments in Turin. Early subscribers will get priority access!</span>
-                        <span lang="it">Prevediamo di lanciare per gli investitori a maggio 2026 e per gli studenti a settembre 2026 con i nostri primi 15 appartamenti a Torino. I primi iscritti avranno accesso prioritario!</span>
+                        <span lang="en">We're launching in September 2026 with 12 fully-furnished apartments (36 rooms) near major Turin universities. Early waitlist members get first choice of apartments and the best deals. Don't wait - spots are filling fast!</span>
+                        <span lang="it">Lanciamo a settembre 2026 con 12 appartamenti completamente arredati (36 stanze) vicino alle principali università di Torino. I primi iscritti alla lista d'attesa hanno la prima scelta degli appartamenti e le migliori offerte. Non aspettare - i posti si stanno esaurendo!</span>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span lang="en">What areas of Turin will you cover?</span>
-                        <span lang="it">Quali zone di Torino coprirete?</span>
+                        <span lang="en">What's included in the rent?</span>
+                        <span lang="it">Cosa è incluso nell'affitto?</span>
                         <span class="faq-arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <span lang="en">We'll start near Politecnico di Torino, Università di Torino, ESCP Business School, IED Torino, IAAD, and IUS Torino. Our apartments will be within walking distance or well-connected by public transport.</span>
-                        <span lang="it">Inizieremo vicino al Politecnico di Torino, Università di Torino, ESCP Business School, IED Torino, IAAD e IUS Torino. I nostri appartamenti saranno raggiungibili a piedi o ben collegati con i mezzi pubblici.</span>
+                        <span lang="en">Everything! Your rent includes: fully furnished room, all utilities (electricity, water, gas, heating), high-speed WiFi, weekly cleaning of common areas, maintenance support, and access to our student community events. No hidden costs, no surprises.</span>
+                        <span lang="it">Tutto! Il tuo affitto include: stanza completamente arredata, tutte le utenze (elettricità, acqua, gas, riscaldamento), WiFi ad alta velocità, pulizia settimanale delle aree comuni, supporto manutenzione e accesso ai nostri eventi della community studentesca. Nessun costo nascosto, nessuna sorpresa.</span>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span lang="en">Are the apartments furnished?</span>
-                        <span lang="it">Gli appartamenti sono arredati?</span>
+                        <span lang="en">Can international students apply?</span>
+                        <span lang="it">Possono candidarsi gli studenti internazionali?</span>
                         <span class="faq-arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <span lang="en">Yes! All our apartments come fully furnished with everything you need for comfortable student living.</span>
-                        <span lang="it">Sì! Tutti i nostri appartamenti sono completamente arredati con tutto il necessario per una vita studentesca confortevole.</span>
+                        <span lang="en">Absolutely! We welcome international students and make the process easy with English support, flexible payment options, and help with documentation. We even assist with codice fiscale registration and other bureaucratic requirements.</span>
+                        <span lang="it">Assolutamente! Accogliamo studenti internazionali e rendiamo il processo facile con supporto in inglese, opzioni di pagamento flessibili e aiuto con la documentazione. Assistiamo anche con la registrazione del codice fiscale e altri requisiti burocratici.</span>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span lang="en">Can I invest with just €100?</span>
-                        <span lang="it">Posso investire con soli €100?</span>
+                        <span lang="en">How can I invest with just €100?</span>
+                        <span lang="it">Come posso investire con soli €100?</span>
                         <span class="faq-arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <span lang="en">Yes! Our innovative investment model makes real estate accessible to everyone. Join our investor waitlist to learn more about expected returns.</span>
-                        <span lang="it">Sì! Il nostro modello di investimento innovativo rende il mercato immobiliare accessibile a tutti. Iscriviti alla nostra lista investitori per saperne di più sui rendimenti attesi.</span>
+                        <span lang="en">Through our fractional ownership model, you can own a share of Turin real estate starting from just €100. Earn passive income from student rentals with expected returns of 8-12% annually. It's real estate investing democratized for everyone!</span>
+                        <span lang="it">Attraverso il nostro modello di proprietà frazionata, puoi possedere una quota di immobili a Torino partendo da soli €100. Guadagna reddito passivo dagli affitti studenteschi con rendimenti attesi dell'8-12% annuo. È l'investimento immobiliare democratizzato per tutti!</span>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span lang="en">Is there a minimum rental period?</span>
+                        <span lang="it">C'è un periodo minimo di affitto?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <span lang="en">We offer 9-month contracts aligned with the academic year (September to June), perfect for students. We also have flexible options for shorter stays for exchange students. Unlike traditional rentals, we understand student needs and offer genuine flexibility without penalties.</span>
+                        <span lang="it">Offriamo contratti di 9 mesi allineati con l'anno accademico (settembre-giugno), perfetti per gli studenti. Abbiamo anche opzioni flessibili per soggiorni più brevi per studenti in scambio. A differenza degli affitti tradizionali, comprendiamo le esigenze degli studenti e offriamo vera flessibilità senza penali.</span>
                     </div>
                 </div>
             </div>
@@ -1087,77 +1609,99 @@
 
     <footer>
         <div class="container">
-            <p>
-                <span lang="en">Email us at</span>
-                <span lang="it">Scrivici a</span>
-                <a href="mailto:junglerententerprise@gmail.com" style="color: var(--primary-green); text-decoration: none;">junglerententerprise@gmail.com</a>
-            </p>
-            <p style="margin-top: 20px; color: var(--text-secondary);">
-                <span lang="en">&copy; 2024 Jungle Rent. Building the future of student housing.</span>
-                <span lang="it">&copy; 2024 Jungle Rent. Costruiamo il futuro dell'alloggio studentesco.</span>
-            </p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    Jungle Rent
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:junglerententerprise@gmail.com">
+                        <span lang="en">Email Us</span>
+                        <span lang="it">Scrivici</span>
+                    </a>
+                    <a href="#" onclick="showPrivacy(); return false;">
+                        <span lang="en">Privacy Policy</span>
+                        <span lang="it">Privacy Policy</span>
+                    </a>
+                    <a href="#" onclick="showTerms(); return false;">
+                        <span lang="en">Terms</span>
+                        <span lang="it">Termini</span>
+                    </a>
+                </div>
+                <p style="margin-top: 30px; color: var(--text-secondary); font-size: 14px;">
+                    <span lang="en">© 2024 Jungle Rent. Revolutionizing student housing in Turin.</span>
+                    <span lang="it">© 2024 Jungle Rent. Rivoluzionando gli alloggi studenteschi a Torino.</span>
+                </p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Form translations
+        // Enhanced translations
         const translations = {
             en: {
-                name: "Your Name",
-                email: "Your Email", 
-                university: "Select University (Optional)",
+                name: "Your Full Name",
+                email: "Your Email Address", 
+                university: "Select Your University (Optional)",
                 budget: "Monthly Budget (Optional)",
-                moveDate: "When do you need housing? (Optional)",
-                referral: "How did you hear about us? (Optional)",
+                moveDate: "When Do You Need Housing? (Optional)",
+                referral: "How Did You Discover Us? (Optional)",
                 other: "Other",
-                friend: "Friend",
+                friend: "Friend / Referral",
                 universityRef: "University",
-                social: "Social Media",
-                search: "Google Search",
-                aiSearch: "AI Search",
+                instagram: "Instagram",
+                facebook: "Facebook",
+                google: "Google Search",
+                aiAssistant: "AI Assistant (ChatGPT, Claude, etc.)",
                 september: "September 2025",
                 january: "January 2026",
-                formTitle: "Be the First to Know",
-                formSubtitle: "Join our exclusive waitlist and get early access when we launch.",
-                submitBtn: "Get Early Access",
-                formTitleInvestor: "Invest from Just €100",
-                formSubtitleInvestor: "Discover a new way to invest in real estate. Get exclusive early access.",
-                submitBtnInvestor: "Join Investor Waitlist",
-                magnetStudent: "📚 Get FREE: \"10 Tricks to Rent in Turin\" guide",
-                magnetInvestor: "📊 Get FREE: \"Student Housing Market Report 2024\"",
-                sending: "Sending..."
+                asap: "As Soon As Possible",
+                formTitle: "Secure Your Spot",
+                formSubtitle: "Join the exclusive waitlist. Limited spots available.",
+                submitBtn: "Reserve My Spot →",
+                formTitleInvestor: "Start Investing from €100",
+                formSubtitleInvestor: "Discover the future of real estate investment. Get exclusive early access.",
+                submitBtnInvestor: "Become an Investor →",
+                magnetStudent: "📚 Get the \"Turin Student Housing Guide 2025\"",
+                magnetInvestor: "📊 Get the \"Student Housing Investment Report 2024\"",
+                sending: "Securing Your Spot...",
+                nameError: "Please enter your name",
+                emailError: "Please enter a valid email"
             },
             it: {
-                name: "Il tuo Nome",
-                email: "La tua Email",
-                university: "Seleziona Università (Opzionale)",
+                name: "Nome e Cognome",
+                email: "Il Tuo Indirizzo Email",
+                university: "Seleziona la Tua Università (Opzionale)",
                 budget: "Budget Mensile (Opzionale)",
-                moveDate: "Quando ti serve l'alloggio? (Opzionale)",
-                referral: "Come ci hai conosciuto? (Opzionale)",
+                moveDate: "Quando Ti Serve l'Alloggio? (Opzionale)",
+                referral: "Come Ci Hai Scoperto? (Opzionale)",
                 other: "Altro",
-                friend: "Amico",
+                friend: "Amico / Referral",
                 universityRef: "Università",
-                social: "Social Media",
-                search: "Ricerca Google",
-                aiSearch: "Ricerca IA",
+                instagram: "Instagram",
+                facebook: "Facebook",
+                google: "Ricerca Google",
+                aiAssistant: "Assistente IA (ChatGPT, Claude, ecc.)",
                 september: "Settembre 2025",
                 january: "Gennaio 2026",
-                formTitle: "Sii il Primo a Sapere",
-                formSubtitle: "Unisciti alla nostra lista d'attesa esclusiva e ottieni l'accesso anticipato al lancio.",
-                submitBtn: "Ottieni Accesso Anticipato",
-                formTitleInvestor: "Investi da Soli €100",
-                formSubtitleInvestor: "Scopri un nuovo modo di investire nel mercato immobiliare. Ottieni accesso esclusivo anticipato.",
-                submitBtnInvestor: "Unisciti alla Lista Investitori",
-                magnetStudent: "📚 Ricevi GRATIS: Guida \"10 Trucchi per Affittare a Torino\"",
-                magnetInvestor: "📊 Ricevi GRATIS: \"Report Mercato Immobiliare Studentesco 2024\"",
-                sending: "Invio..."
+                asap: "Il Prima Possibile",
+                formTitle: "Prenota il Tuo Posto",
+                formSubtitle: "Unisciti alla lista esclusiva. Posti limitati disponibili.",
+                submitBtn: "Prenota il Mio Posto →",
+                formTitleInvestor: "Inizia a Investire da €100",
+                formSubtitleInvestor: "Scopri il futuro dell'investimento immobiliare. Ottieni accesso esclusivo anticipato.",
+                submitBtnInvestor: "Diventa Investitore →",
+                magnetStudent: "📚 Ricevi la \"Guida Alloggi Studenti Torino 2025\"",
+                magnetInvestor: "📊 Ricevi il \"Report Investimenti Immobiliari Studenteschi 2024\"",
+                sending: "Prenotando il Tuo Posto...",
+                nameError: "Inserisci il tuo nome",
+                emailError: "Inserisci un'email valida"
             }
         };
 
         let currentLang = 'en';
         let currentTab = 'student';
 
-        // Update form text based on language and tab
+        // Update form translations
         function updateFormTranslations() {
             const t = translations[currentLang];
             
@@ -1173,11 +1717,13 @@
             document.getElementById('other-option').textContent = t.other;
             document.getElementById('friend-option').textContent = t.friend;
             document.getElementById('university-option').textContent = t.universityRef;
-            document.getElementById('social-option').textContent = t.social;
-            document.getElementById('search-option').textContent = t.search;
-            document.getElementById('ai-search-option').textContent = t.aiSearch;
+            document.getElementById('instagram-option').textContent = t.instagram;
+            document.getElementById('facebook-option').textContent = t.facebook;
+            document.getElementById('google-option').textContent = t.google;
+            document.getElementById('ai-option').textContent = t.aiAssistant;
             document.getElementById('september-option').textContent = t.september;
             document.getElementById('january-option').textContent = t.january;
+            document.getElementById('asap-option').textContent = t.asap;
             document.getElementById('other-move-option').textContent = t.other;
             document.getElementById('other-referral-option').textContent = t.other;
             
@@ -1186,20 +1732,16 @@
                 document.querySelector('.form-title span[lang="' + currentLang + '"]').textContent = t.formTitleInvestor;
                 document.querySelector('.form-subtitle span[lang="' + currentLang + '"]').textContent = t.formSubtitleInvestor;
                 document.querySelector('#submit-btn span[lang="' + currentLang + '"]').textContent = t.submitBtnInvestor;
-                document.getElementById('magnet-text').innerHTML = 
-                    `<span lang="en" style="display: ${currentLang === 'en' ? 'inline' : 'none'}">${translations.en.magnetInvestor}</span>
-                     <span lang="it" style="display: ${currentLang === 'it' ? 'inline' : 'none'}">${translations.it.magnetInvestor}</span>`;
+                document.querySelector('#magnet-text span[lang="' + currentLang + '"]').textContent = t.magnetInvestor;
             } else {
                 document.querySelector('.form-title span[lang="' + currentLang + '"]').textContent = t.formTitle;
                 document.querySelector('.form-subtitle span[lang="' + currentLang + '"]').textContent = t.formSubtitle;
                 document.querySelector('#submit-btn span[lang="' + currentLang + '"]').textContent = t.submitBtn;
-                document.getElementById('magnet-text').innerHTML = 
-                    `<span lang="en" style="display: ${currentLang === 'en' ? 'inline' : 'none'}">${translations.en.magnetStudent}</span>
-                     <span lang="it" style="display: ${currentLang === 'it' ? 'inline' : 'none'}">${translations.it.magnetStudent}</span>`;
+                document.querySelector('#magnet-text span[lang="' + currentLang + '"]').textContent = t.magnetStudent;
             }
         }
 
-        // Countdown Timer
+        // Enhanced Countdown Timer
         function updateCountdown() {
             const launchDate = new Date('2025-09-30T23:59:59').getTime();
             const now = new Date().getTime();
@@ -1210,106 +1752,250 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
             document.getElementById('days').innerText = days;
-            document.getElementById('hours').innerText = hours;
-            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
 
             if (distance < 0) {
-                document.getElementById('countdown').innerHTML = '<div class="countdown-number">LAUNCHED!</div>';
+                document.getElementById('countdown').innerHTML = '<div class="countdown-number" style="font-size: 24px;">🎉 NOW LIVE!</div>';
             }
         }
 
-        // Update countdown every minute
         setInterval(updateCountdown, 60000);
         updateCountdown();
 
-        // Animated counter function
+        // Enhanced counter animation
         function animateCounter(element) {
             const target = parseInt(element.getAttribute('data-target'));
-            const duration = 2000; // 2 seconds
+            const suffix = element.getAttribute('data-suffix') || '';
+            const duration = 2500;
             const startTime = performance.now();
             
-            // Add counting class for glow effect
             element.classList.add('counting');
             
-            // Check if it's a percentage
-            let isPercentage = false;
-            const statLabel = element.parentElement.querySelector('.stat-label');
-            if (statLabel && statLabel.textContent.includes('%')) {
-                isPercentage = true;
-            }
-            
-            function easeOutQuart(t) {
-                return 1 - Math.pow(1 - t, 4);
+            function easeOutExpo(t) {
+                return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
             }
             
             function updateCounter(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                const easeProgress = easeOutQuart(progress);
+                const easeProgress = easeOutExpo(progress);
                 const current = Math.floor(target * easeProgress);
                 
-                element.textContent = current + (isPercentage ? '%' : '');
+                element.textContent = current + suffix;
                 
                 if (progress < 1) {
                     requestAnimationFrame(updateCounter);
                 } else {
-                    element.textContent = target + (isPercentage ? '%' : '');
+                    element.textContent = target + suffix;
                     element.classList.remove('counting');
+                    element.classList.add('counted');
                 }
             }
             
             requestAnimationFrame(updateCounter);
         }
 
-        // Intersection Observer for counter animation
-        const counterObserver = new IntersectionObserver((entries) => {
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    const delay = parseInt(entry.target.getAttribute('data-delay') || 0);
-                    setTimeout(() => {
-                        animateCounter(entry.target);
-                    }, delay);
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('scroll-reveal')) {
+                        entry.target.classList.add('revealed');
+                    } else if (entry.target.hasAttribute('data-target') && !entry.target.classList.contains('counted')) {
+                        const delay = parseInt(entry.target.getAttribute('data-delay') || 0);
+                        setTimeout(() => {
+                            animateCounter(entry.target);
+                        }, delay);
+                    }
                 }
             });
-        }, { threshold: 0.5 });
+        }, observerOptions);
 
-        // Observe all stat numbers and waitlist counter
-        document.querySelectorAll('.stat-number[data-target], .waitlist-counter[data-target]').forEach(el => {
-            counterObserver.observe(el);
-        });
+        // Observe elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('[data-target]').forEach(el => observer.observe(el));
 
-        // FAQ Toggle
+        // FAQ Toggle with smooth animation
         function toggleFAQ(element) {
             const faqItem = element.parentElement;
-            faqItem.classList.toggle('active');
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
         }
 
-        // Language switching functionality
+        // Language switching
         function switchLanguage(lang) {
             currentLang = lang;
             
-            // Update body class
             if (lang === 'it') {
                 document.body.classList.add('italian');
             } else {
                 document.body.classList.remove('italian');
             }
             
-            // Update active language button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
             
-            // Update form translations
             updateFormTranslations();
-            
-            // Store language preference
             localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Load preferred language on page load
+        // Tab switching
+        function switchTab(type) {
+            currentTab = type;
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            document.getElementById('user-type').value = type;
+            
+            const studentFields = document.getElementById('student-fields');
+            if (type === 'investor') {
+                studentFields.style.display = 'none';
+                document.querySelector('input[name="_subject"]').value = 'New Jungle Rent Investor Lead 💰';
+            } else {
+                studentFields.style.display = 'block';
+                document.querySelector('input[name="_subject"]').value = 'New Jungle Rent Student Lead 🎓';
+            }
+            
+            updateFormTranslations();
+        }
+
+        // Enhanced form validation
+        function validateForm(form) {
+            let isValid = true;
+            const email = form.querySelector('#email');
+            const name = form.querySelector('#name');
+            
+            // Validate name
+            if (name.value.trim().length < 2) {
+                name.parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                name.parentElement.classList.remove('error');
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                email.parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                email.parentElement.classList.remove('error');
+            }
+            
+            return isValid;
+        }
+
+        // Enhanced form submission
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateForm(this)) {
+                return;
+            }
+            
+            // Add timestamp
+            document.getElementById('timestamp').value = new Date().toISOString();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalContent = submitBtn.innerHTML;
+            const t = translations[currentLang];
+            
+            submitBtn.innerHTML = `<span>${t.sending}</span>`;
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Success
+                    this.style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                    
+                    // Update counter
+                    const counter = document.querySelector('.waitlist-counter');
+                    const currentValue = parseInt(counter.textContent);
+                    counter.setAttribute('data-target', currentValue + 1);
+                    animateCounter(counter);
+                    
+                    // Track conversion
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'conversion', {
+                            'event_category': 'engagement',
+                            'event_label': currentTab
+                        });
+                    }
+                    
+                    // Reset after delay
+                    setTimeout(() => {
+                        this.reset();
+                        this.style.display = 'block';
+                        document.getElementById('success-message').style.display = 'none';
+                        submitBtn.innerHTML = originalContent;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('loading');
+                    }, 7000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert(currentLang === 'it' ? 'Si è verificato un errore. Riprova.' : 'An error occurred. Please try again.');
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+            });
+        });
+
+        // Remove error state on input
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.parentElement.classList.contains('form-group')) {
+                    this.parentElement.classList.remove('error');
+                }
+            });
+        });
+
+        // Privacy and Terms modals (placeholder functions)
+        function showPrivacy() {
+            alert(currentLang === 'it' ? 
+                'La nostra Privacy Policy completa sarà disponibile a breve. I tuoi dati sono protetti e utilizzati solo per contattarti riguardo Jungle Rent.' :
+                'Our complete Privacy Policy will be available soon. Your data is protected and only used to contact you about Jungle Rent.');
+        }
+
+        function showTerms() {
+            alert(currentLang === 'it' ?
+                'I Termini e Condizioni completi saranno disponibili a breve.' :
+                'Complete Terms and Conditions will be available soon.');
+        }
+
+        // Initialize on load
         window.addEventListener('DOMContentLoaded', function() {
             const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
             currentLang = preferredLang;
@@ -1321,102 +2007,37 @@
             }
             
             updateFormTranslations();
+            
+            // Add smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
 
-        function switchTab(type) {
-            currentTab = type;
-            
-            // Update active tab
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
+        // Performance optimization - lazy load images if any
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
             });
-            event.target.classList.add('active');
-            
-            // Update hidden field
-            document.getElementById('user-type').value = type;
-            
-            // Show/hide student specific fields
-            const studentFields = document.getElementById('student-fields');
-            if (type === 'investor') {
-                studentFields.style.display = 'none';
-                document.querySelector('input[name="_subject"]').value = 'New Jungle Rent Investor Lead';
-            } else {
-                studentFields.style.display = 'block';
-                document.querySelector('input[name="_subject"]').value = 'New Jungle Rent Student Lead';
-            }
-            
-            // Update form translations
-            updateFormTranslations();
+
+            document.querySelectorAll('img.lazy').forEach(img => imageObserver.observe(img));
         }
-
-        // Handle form submission
-        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state on button
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            const t = translations[currentLang];
-            submitBtn.innerHTML = t.sending;
-            submitBtn.disabled = true;
-            
-            // Submit the form using Formspree
-            fetch(this.action, {
-                method: 'POST',
-                body: new FormData(this),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    // Show success message
-                    document.getElementById('waitlist-form').style.display = 'none';
-                    document.getElementById('success-message').style.display = 'block';
-                    
-                    // Update waitlist counter
-                    const counter = document.querySelector('.waitlist-counter');
-                    const currentValue = parseInt(counter.getAttribute('data-target'));
-                    const newValue = currentValue + 1;
-                    counter.setAttribute('data-target', newValue);
-                    counter.textContent = newValue;
-                    
-                    // Reset form after 5 seconds
-                    setTimeout(() => {
-                        document.getElementById('waitlist-form').reset();
-                        document.getElementById('waitlist-form').style.display = 'block';
-                        document.getElementById('success-message').style.display = 'none';
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                        // Uncheck the privacy checkbox
-                        document.getElementById('privacy-consent').checked = false;
-                    }, 5000);
-                } else {
-                    // Handle error
-                    alert('There was an error. Please try again.');
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }
-            }).catch(error => {
-                // Handle error
-                alert('There was an error. Please try again.');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
-        });
-
-        // Add smooth scroll behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
     </script>
 </body>
 </html>
