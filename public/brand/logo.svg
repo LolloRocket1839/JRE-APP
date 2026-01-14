@@ -1,0 +1,17 @@
+<svg viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D6A4F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1F3D2A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Leaf Icon -->
+  <g transform="translate(0, 4)">
+    <path d="M16 2C16 2 8 8 8 18C8 24 12 28 16 28C20 28 24 24 24 18C24 8 16 2 16 2Z" fill="url(#leafGradient)"/>
+    <path d="M16 8V22M12 14L16 18L20 14" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Text -->
+  <text x="36" y="28" font-family="'Playfair Display', Georgia, serif" font-size="24" font-weight="600" font-style="italic" fill="#1F3D2A">
+    Jungle Rent
+  </text>
+</svg>
