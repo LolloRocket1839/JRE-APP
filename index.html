@@ -83,21 +83,30 @@
         }
 
         .logo {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--primary-green);
             display: flex;
             align-items: center;
             gap: 10px;
-            letter-spacing: -0.5px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            text-decoration: none;
         }
 
         .logo:hover {
             transform: translateY(-2px);
-            filter: brightness(1.2);
+            filter: brightness(1.1);
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: -0.5px;
         }
 
         .nav-right {
@@ -993,12 +1002,20 @@
         }
 
         .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-green);
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .footer-logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .footer-logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-green);
         }
 
         .footer-links {
@@ -1377,7 +1394,9 @@
 
     <header>
         <nav class="container">
-            <div class="logo">Jungle Rent</div>
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="Jungle Rent Logo">
+            </a>
             <div class="nav-right">
                 <div class="trust-badge">
                     <span lang="en">Verified Partner</span>
@@ -1740,7 +1759,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    Jungle Rent
+                    <img src="assets/logo.png" alt="Jungle Rent Logo">
                 </div>
                 <div class="footer-links">
                     <a href="mailto:junglerententerprise@gmail.com">
